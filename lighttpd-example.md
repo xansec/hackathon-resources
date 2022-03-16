@@ -8,12 +8,19 @@ This guide will show you how to get started with Mayhem using the web interface.
 
 ## Step 1. Create a Mayhem account
 
-Create a new account by navigating to 
-[training.forallsecure.com](https://training.forallsecure.com) and either choose:
-   * Google account: Use your Google account on Mayhem
-   * "Sign up": Create a local account on the Mayhem instance. 
+Create a new account by navigating to [mayhem.forallsecure.com](https://mayhem.forallsecure.com) and select sign in with GitHub:
 
-![Mayhem Account Creation](assets/images/account-creation.png)
+![Sign In with Github](assets/images/sign-in-with-github.png)
+
+On the GitHub sign in page, enter your GitHub credentials or click Create an account:
+
+![Enter Credentials or Signup](assets/images/github-login-or-signup.png)
+
+If you're creating a new GitHub account, follow the onscreen instructions.
+
+In either case, if you're creating a new account or logging in with an existing account, you should eventually be prompted to authorize Mayhem. Click "Authorize ForAllSecure".
+
+![Authorize ForAllSecure](assets/images/authorize-mayhem.png)
 
 ## Step 2. Create a new Run
 
