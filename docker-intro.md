@@ -188,7 +188,6 @@ Now that you've logged in to the GitHub container registry, we can build and pus
 
 ![Packages](assets/images/gh-personal-packages.png)
 
-
     * In the packages tab, click on "fuzzme".
 
 
@@ -205,4 +204,45 @@ Now that you've logged in to the GitHub container registry, we can build and pus
     * In the Change package visibility dialog, set the visibility to public, type the name "fuzzme" to confirm, and click "I understand..."
 
 ![Change Visibility](assets/images/gh-change-vis.png)
+
+## Start a Mayhem Run
+
+Now that you've pushed your image to Mayhem, let's kick off a run.
+
+1. Using your favorite text editor, modify the Mayhemfile. Replace <YOUR GITHUB USERNAME> with your GitHub username. Your Mayhemfile should look similar to this:
+
+    ```
+    # Mayhemfile version specifier
+    version: '1.17'
+
+    # Namespaced project name that the target belongs to
+    project: nathanjackson/hackathon
+
+    # Target name (should be unique within the project)
+    target: fuzzme
+
+    # Base image to run the binary in.
+    baseimage: ghcr.io/nathanjackson/fuzzme:latest
+
+    # List of commands used to test the target
+    cmds:
+
+        # Command used to start the target, "@@" is the input file
+        # (when "@@" is omitted Mayhem defaults to stdin inputs)
+        - cmd: /fuzzme @@
+    ```
+
+2. Now kick off the run!
+
+    ```
+    mayhem run .
+    ```
+
+    You should see output similar to the following:
+
+    ```
+    Run started: hackathon/fuzzme/1
+    Run URL: https://mayhem.forallsecure.com:443/nathanjackson/hackathon/fuzzme/1
+    hackathon/fuzzme/1
+    ```
 
