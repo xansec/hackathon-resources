@@ -174,9 +174,16 @@ Now that you've logged in to the GitHub container registry, we can build and pus
 
     The last argument `.` specifies the build context, which in this case is the current directory. This tells Docker what directory it has access to on the host during the build process.
 
-5. Finally, once the build completes. Push the image to the registry.
+5. Once the build completes. Push the image to the registry.
 
     ```
     docker push ghcr.io/<Your GitHub Username>/fuzzme:latest
     ```
+6. Now, mark the package as public so Mayhem can see it:
+
+    * Navigate to github.com/<Your username>
+
+    * Click on "Packages".
+
+![Packages](assets/images/gh-personal-packages.png)
 
