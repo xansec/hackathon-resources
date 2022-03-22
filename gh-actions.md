@@ -173,7 +173,22 @@ If this is what you saw, congratulations you just automated the build and packag
 
 ## Add a Mayhemfile
 
-1. Fill out "template" Mayhemfile.
+With your Dockerfile written, you just need to create a Mayhemfile which should be the easiest part of the process!
+
+Create a `Mayhemfile` with the following contents in your copy of the repo:
+
+```
+tasks:
+  - name: exploitability_factors
+  - name: regression_testing
+  - name: behavior_testing
+  - name: coverage_analysis
+
+cmds:
+  - cmd: /fuzzme
+```
+
+Note that since we're setting up a GitHub Action, we can leave out many of the fields that would otherwise be required. The GitHub Action will automatically generate the fields for us.
 
 ## Setup your MAYHEM_TOKEN Repository Secret
 
@@ -202,3 +217,4 @@ If this is what you saw, congratulations you just automated the build and packag
 3. Copy the example from https://github.com/ForAllSecure/mcode-action-examples/blob/main/.github/workflows/mayhem.yml
 
 4. Commit and Push to your fork.
+
