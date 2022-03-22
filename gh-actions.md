@@ -194,19 +194,33 @@ Note that since we're setting up a GitHub Action, we can leave out many of the f
 
 1. Navigate to the settings page of your fork.
 
+![Fork Settings](assets/images/gh-fork-settings.png)
+
 2. Expand the secrets drop down and select "Actions".
+
+![Secrets Dropdown](assets/images/gh-secrets-dropdown.png)
 
 3. Click "New repository secret".
 
+![New Repo Secret](assets/images/gh-new-repo-secret.png)
+
 4. Under name enter "MAYHEM_TOKEN".
+
+![Secret Name](assets/images/gh-mayhem-token1.png)
 
 3. In another tab or window, open mayhem.forallsecure.com.
 
-4. Copy your API Token
+4. Copy your API Token in using the "Copy API Token" menu item in the Mayhem web interface.
 
-5. Paste into the "Value" field back in GitHub.
+![Copy API Token](assets/images/mayhem-copy-api-token.png)
+
+5. Paste the API token into the "Value" field back in the GitHub New repository secret page.
+
+![Paste API Token](assets/images/gh-mayhem-token2.png)
 
 6. Click Add secret.
+
+![Add API Token](assets/images/gh-add-token.png)
 
 ## Setup GitHub Action Workflow
 
