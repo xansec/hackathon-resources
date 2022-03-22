@@ -70,78 +70,56 @@ This lab will show you how to build a Docker image for a toy program, push it to
 
 1. First, we need to setup Docker to enable pushing new images for a later step.
 
-    a. Navigate to https://github.com.
+1. Navigate to https://github.com.
 
-    b. Click on your user account icon to reveal a drop down menu.
+2. Click on your user account icon to reveal a drop down menu.
 
 ![Account Drop Down](assets/images/github-user-icon.png)
 
-    c. Click on settings in the drop down menu.
+3. Click on settings in the drop down menu.
 
 ![Settings](assets/images/gh-settings.png)
 
-    d. On the left side of the settings page, select "Developer Settings."
+4. On the left side of the settings page, select "Developer Settings."
 
 ![Developer Settings](assets/images/gh-dev-settings.png)
 
-    e. On the developer settings page, select "Personal Access Tokens".
+5. On the developer settings page, select "Personal Access Tokens".
 
 ![Select PAT](assets/images/gh-pat.png)
 
-    f. Click create new token.
+6. Click create new token.
 
 ![Create New PAT](assets/images/gh-gen-new-token.png)
 
-    g. Enter a note for the token, and check the repo, workflow, write:packages, and delete:packages scopes.
+7. Enter a note for the token, and check the repo, workflow, write:packages, and delete:packages scopes.
 
 ![Select PAT Scopes](assets/images/gh-new-pat-scopes.png)
 
-    h. Scroll to the bottom and click "Generate New Token".
+8. Scroll to the bottom and click "Generate New Token".
 
 ![Gen New Token](assets/images/gh-gen-new-token.png)
 
-    i. Click the copy button to copy the token to your clipboard.
+9. Click the copy button to copy the token to your clipboard.
 
 ![Copy Token](assets/images/gh-copy-token.png)
 
-    j. Back on the command-line, we'll use the `docker login` command to login to the GitHub container registry.
-
-        ```
-        docker login -u <Your GitHub Username> ghcr.io
-        ```
-
-        When prompted for a password, paste your personal access token (PAT) that you copied in the previous step. Note the token will not echo. After pasting, press enter.
-
-        You should see something similar to the following:
-
-        ```
-        Password: 
-        WARNING! Your password will be stored unencrypted in /home/nathan/.docker/config.json.
-        Configure a credential helper to remove this warning. See
-        https://docs.docker.com/engine/reference/commandline/login/#credentials-store
-
-        Login Succeeded
-        ```
-
-1. First, we need to clone the hackathon-resources repo and enter the "lab2b" directory.
+10. Back on the command-line, we'll use the `docker login` command to login to the GitHub container registry.
 
     ```
-    git clone https://github.com/makesoftwaresafe/hackathon-resources.git
-    cd hackathon-resources/lab2b/
+    docker login -u <Your GitHub Username> ghcr.io
     ```
 
-2. List the files in the lab2b directory:
+    When prompted for a password, paste your personal access token (PAT) that you copied in the previous step. Note the token will not echo. After pasting, press enter.
+
+    You should see something similar to the following:
 
     ```
-    ls
+    Password: 
+    WARNING! Your password will be stored unencrypted in /home/nathan/.docker/config.json.
+    Configure a credential helper to remove this warning. See
+    https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+
+    Login Succeeded
     ```
 
-    You should see the following:
-
-    ```
-    Dockerfile
-    Mayhemfile
-    fuzzme.c
-    ```
-    
-    
