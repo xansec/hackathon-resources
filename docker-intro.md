@@ -188,20 +188,20 @@ Now that you've logged in to the GitHub container registry, we can build and pus
 
 ![Packages](assets/images/gh-personal-packages.png)
 
-    * In the packages tab, click on "fuzzme".
+   * In the packages tab, click on "fuzzme".
 
 
 ![List Packages](assets/images/gh-fuzzme-pkg.png)
 
-    * Now click "Package settings"
+   * Now click "Package settings"
 
 ![Package Settings](assets/images/gh-package-settings.png)
 
-    * Under "Danger Zone" click "Change visibility"
+   * Under "Danger Zone" click "Change visibility"
 
 ![Danger Zone](assets/images/gh-danger-zone.png)
 
-    * In the Change package visibility dialog, set the visibility to public, type the name "fuzzme" to confirm, and click "I understand..."
+   * In the Change package visibility dialog, set the visibility to public, type the name "fuzzme" to confirm, and click "I understand..."
 
 ![Change Visibility](assets/images/gh-change-vis.png)
 
