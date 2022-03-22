@@ -125,3 +125,58 @@ This lab will show you how to build a Docker image for a toy program, push it to
     Login Succeeded
     ```
 
+## Build and Push the Docker Image
+
+Now that you've logged in to the GitHub container registry, we can build and push a Docker image.
+
+1. Clone the hackathon-resources repo and change into the lab2b directory.
+
+    ```
+    git clone https://github.com/makesoftwaresafe/hackathon-resources.git
+    cd hackathon-resources/lab2b/
+    ```
+
+2. List the contents of the lab2b directory.
+
+    ```
+    ls
+    ```
+
+    You should see the following:
+
+    ```
+    Dockerfile
+    Mayhemfile
+    fuzzme.c
+    ```
+
+3. Examine the Dockerfile.
+
+    ```
+    cat Dockerfile
+    ```
+
+    You'll see that the Dockerfile is split up into two stages: the build stage, and the package stage.
+
+    The build stage is where we will actually setup our build environment and compile the code.
+
+    The package stage copies the executable into our final image. Note that we could combine these into one stage, but our resulting docker image would be much larger. So the best practice here is to separate the build stage from the package stage.
+
+4. Now, build the image using the `docker build` command.
+
+   In the docker build command, we specify a tag name using `-t`. The tag tells docker the registry (`ghcr.io`), the name (`<Your GitHub Username>/fuzzme`, and the version (`latest`).
+
+    ```
+    docker build -t ghcr.io/<Your GitHub Username>/fuzzme:latest .
+    ```
+
+    In the docker build command, we specify a tag name using `-t`. The tag tells docker the registry (`ghcr.io`), the name (`<Your GitHub Username>/fuzzme`, and the version (`latest`) of the Docker image.
+
+    The last argument `.` specifies the build context, which in this case is the current directory. This tells Docker what directory it has access to on the host during the build process.
+
+5. Finally, once the build completes. Push the image to the registry.
+
+    ```
+    docker push ghcr.io/<Your GitHub Username>/fuzzme:latest
+    ```
+
