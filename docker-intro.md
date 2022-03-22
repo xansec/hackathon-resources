@@ -74,35 +74,35 @@ This lab will show you how to build a Docker image for a toy program, push it to
 
     b. Click on your user account icon to reveal a drop down menu.
 
-       ![Account Drop Down](assets/images/github-user-icon.png)
+![Account Drop Down](assets/images/github-user-icon.png)
 
     c. Click on settings in the drop down menu.
 
-       ![Settings](assets/images/gh-settings.png)
+![Settings](assets/images/gh-settings.png)
 
     d. On the left side of the settings page, select "Developer Settings."
 
-       ![Developer Settings](assets/images/gh-dev-settings.png)
+![Developer Settings](assets/images/gh-dev-settings.png)
 
     e. On the developer settings page, select "Personal Access Tokens".
 
-       ![Select PAT](assets/images/gh-pat.png)
+![Select PAT](assets/images/gh-pat.png)
 
     f. Click create new token.
 
-       ![Create New PAT](assets/images/gh-gen-new-token.png)
+![Create New PAT](assets/images/gh-gen-new-token.png)
 
     g. Enter a note for the token, and check the repo, workflow, write:packages, and delete:packages scopes.
 
-       ![Select PAT Scopes](assets/images/gh-new-pat-scopes.png)
+![Select PAT Scopes](assets/images/gh-new-pat-scopes.png)
 
     h. Scroll to the bottom and click "Generate New Token".
 
-       ![Gen New Token](assets/images/gh-gen-new-token.png)
+![Gen New Token](assets/images/gh-gen-new-token.png)
 
     i. Click the copy button to copy the token to your clipboard.
 
-       ![Copy Token](assets/images/gh-copy-token.png)
+![Copy Token](assets/images/gh-copy-token.png)
 
     j. Back on the command-line, we'll use the `docker login` command to login to the GitHub container registry.
 
