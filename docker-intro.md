@@ -188,7 +188,9 @@ Now that you've logged in to the GitHub container registry, we can build and pus
 
 ![Packages](assets/images/gh-personal-packages.png)
 
+
     * In the packages tab, click on "fuzzme".
+
 
 ![List Packages](assets/images/gh-fuzzme-pkg.png)
 
