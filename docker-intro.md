@@ -68,43 +68,45 @@ from that image.
 
 This lab will show you how to build a Docker image for a toy program, push it to a Docker registry, and then use Mayhem to analyze the toy program in the image.
 
+## Login to the GitHub Container Registry
+
 1. First, we need to setup Docker to enable pushing new images for a later step.
 
-1. Navigate to https://github.com.
+2. Navigate to https://github.com.
 
-2. Click on your user account icon to reveal a drop down menu.
+3. Click on your user account icon to reveal a drop down menu.
 
 ![Account Drop Down](assets/images/github-user-icon.png)
 
-3. Click on settings in the drop down menu.
+4. Click on settings in the drop down menu.
 
 ![Settings](assets/images/gh-settings.png)
 
-4. On the left side of the settings page, select "Developer Settings."
+5. On the left side of the settings page, select "Developer Settings."
 
 ![Developer Settings](assets/images/gh-dev-settings.png)
 
-5. On the developer settings page, select "Personal Access Tokens".
+6. On the developer settings page, select "Personal Access Tokens".
 
 ![Select PAT](assets/images/gh-pat.png)
 
-6. Click create new token.
+7. Click create new token.
 
 ![Create New PAT](assets/images/gh-gen-new-token.png)
 
-7. Enter a note for the token, and check the repo, workflow, write:packages, and delete:packages scopes.
+8. Enter a note for the token, and check the repo, workflow, write:packages, and delete:packages scopes.
 
 ![Select PAT Scopes](assets/images/gh-new-pat-scopes.png)
 
-8. Scroll to the bottom and click "Generate New Token".
+9. Scroll to the bottom and click "Generate New Token".
 
 ![Gen New Token](assets/images/gh-gen-new-token.png)
 
-9. Click the copy button to copy the token to your clipboard.
+10. Click the copy button to copy the token to your clipboard.
 
 ![Copy Token](assets/images/gh-copy-token.png)
 
-10. Back on the command-line, we'll use the `docker login` command to login to the GitHub container registry.
+11. Back on the command-line, we'll use the `docker login` command to login to the GitHub container registry.
 
     ```
     docker login -u <Your GitHub Username> ghcr.io
