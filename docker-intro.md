@@ -182,7 +182,7 @@ Now that you've logged in to the GitHub container registry, we can build and pus
 
 6. Now, mark the package as public so Mayhem can see it:
 
-    * Navigate to github.com/<Your username>
+    * Navigate to github.com/\<Your username\>
 
     * Click on "Packages".
 
