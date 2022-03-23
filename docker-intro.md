@@ -3,13 +3,13 @@
 This lab will show you how to pull a Docker image, and run a new container
 from that image.
 
-1. First, pull the hello-world docker image.
+1. First, pull the `hello-world` Docker image.
 
     You can interact with Docker on the command line using the `docker` command.
 
     The `docker` command has a number of sub-commands that you specify like so: `docker <subcommand>`.
 
-    In this case, we're going to run the Docker pull subcommand which will download the hello-world image from Docker Hub.
+    In this case, we're going to run the Docker pull sub-command which will download the `hello-world` image from Docker Hub.
 
     ```
     docker pull hello-world
@@ -31,9 +31,9 @@ from that image.
 
 2. Create a new container and run it.
 
-    To create a new container, we use the `docker run` subcommand. With `docker run`, we'll also specify `--rm`.  `--rm` tells Docker to delete the container after the program inside the container terminates. If `--rm` is left off, Docker will keep the container around after the application terminates. Unless you have a reason to keep the container around, its generally a good idea to delete it once its done because containers do use disk space.
+    To create a new container, we use the `docker run` sub-command. With `docker run`, we'll also specify `--rm`.  `--rm` tells Docker to delete the container after the program inside the container terminates. If `--rm` is left off, Docker will keep the container around after the application terminates. Unless you have a reason to keep the container around, it's generally a good idea to delete it once it's done because containers use disk space.
 
-    ```
+    ```sh
     docker run --rm hello-world
     ```
 
@@ -76,35 +76,35 @@ This lab will show you how to build a Docker image for a toy program, push it to
 
 3. Click on your user account icon to reveal a drop down menu.
 
-![Account Drop Down](assets/images/github-user-icon.png)
+    ![Account Drop Down](assets/images/github-user-icon.png)
 
 4. Click on settings in the drop down menu.
 
-![Settings](assets/images/gh-settings.png)
+    ![Settings](assets/images/gh-settings.png)
 
 5. On the left side of the settings page, select "Developer Settings."
 
-![Developer Settings](assets/images/gh-dev-settings.png)
+    ![Developer Settings](assets/images/gh-dev-settings.png)
 
 6. On the developer settings page, select "Personal Access Tokens".
 
-![Select PAT](assets/images/gh-pat.png)
+    ![Select PAT](assets/images/gh-pat.png)
 
 7. Click create new token.
 
-![Create New PAT](assets/images/gh-gen-new-token.png)
+    ![Create New PAT](assets/images/gh-gen-new-token.png)
 
 8. Enter a note for the token, and check the repo, workflow, write:packages, and delete:packages scopes.
 
-![Select PAT Scopes](assets/images/gh-new-pat-scopes.png)
+    ![Select PAT Scopes](assets/images/gh-new-pat-scopes.png)
 
 9. Scroll to the bottom and click "Generate New Token".
 
-![Gen New Token](assets/images/gh-gen-new-token.png)
+    ![Gen New Token](assets/images/gh-gen-new-token.png)
 
 10. Click the copy button to copy the token to your clipboard.
 
-![Copy Token](assets/images/gh-copy-token.png)
+    ![Copy Token](assets/images/gh-copy-token.png)
 
 11. Back on the command-line, we'll use the `docker login` command to login to the GitHub container registry.
 
@@ -158,6 +158,25 @@ Now that you've logged in to the GitHub container registry, we can build and pus
 
     You'll see that the Dockerfile is split up into two stages: the build stage, and the package stage.
 
+    ```Dockerfile
+    # Build Stage:
+    FROM ubuntu:20.04 as builder
+
+    ## Install build dependencies.
+    RUN apt-get update && \
+        DEBIAN_FRONTEND=noninteractive apt-get install -y gcc
+    
+    ## Add Source Code
+    ADD fuzzme.c /
+    
+    ## Build Step
+    RUN gcc -g fuzzme.c -o fuzzme
+
+    # Package Stage
+    FROM ubuntu:20.04
+    COPY --from=builder /fuzzme /
+    ```
+
     The build stage is where we will actually setup our build environment and compile the code.
 
     The package stage copies the executable into our final image. Note that we could combine these into one stage, but our resulting docker image would be much larger. So the best practice here is to separate the build stage from the package stage.
@@ -186,24 +205,23 @@ Now that you've logged in to the GitHub container registry, we can build and pus
 
     * Click on "Packages".
 
-![Packages](assets/images/gh-personal-packages.png)
+        ![Packages](assets/images/gh-personal-packages.png)
 
-   * In the packages tab, click on "fuzzme".
+    * In the packages tab, click on "fuzzme".
 
+        ![List Packages](assets/images/gh-fuzzme-pkg.png)
 
-![List Packages](assets/images/gh-fuzzme-pkg.png)
+    * Now click "Package settings"
 
-   * Now click "Package settings"
+        ![Package Settings](assets/images/gh-package-settings.png)
 
-![Package Settings](assets/images/gh-package-settings.png)
+    * Under "Danger Zone" click "Change visibility"
 
-   * Under "Danger Zone" click "Change visibility"
+        ![Danger Zone](assets/images/gh-danger-zone.png)
 
-![Danger Zone](assets/images/gh-danger-zone.png)
+    * In the Change package visibility dialog, set the visibility to public, type the name "fuzzme" to confirm, and click "I understand..."
 
-   * In the Change package visibility dialog, set the visibility to public, type the name "fuzzme" to confirm, and click "I understand..."
-
-![Change Visibility](assets/images/gh-change-vis.png)
+        ![Change Visibility](assets/images/gh-change-vis.png)
 
 ## Start a Mayhem Run
 
@@ -211,7 +229,7 @@ Now that you've pushed your image to Mayhem, let's kick off a run.
 
 1. Using your favorite text editor, modify the Mayhemfile. Replace <YOUR GITHUB USERNAME> with your GitHub username. Your Mayhemfile should look similar to this:
 
-    ```
+    ```yaml
     # Mayhemfile version specifier
     version: '1.17'
 
@@ -245,4 +263,3 @@ Now that you've pushed your image to Mayhem, let's kick off a run.
     Run URL: https://mayhem.forallsecure.com:443/nathanjackson/hackathon/fuzzme/1
     hackathon/fuzzme/1
     ```
-
