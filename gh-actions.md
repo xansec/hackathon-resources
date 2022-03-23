@@ -305,3 +305,4 @@ With our Dockerfile, Mayhemfile, and Token configured, we're ready to setup the 
     git push -u origin mayhem
     ```
 
+4. Assuming everything worked, you should now see a new target and run in Mayhem!
