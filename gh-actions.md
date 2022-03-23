@@ -175,17 +175,15 @@ If this is what you saw, congratulations you just automated the build and packag
 
 With your Dockerfile written, you just need to create a Mayhemfile which should be the easiest part of the process!
 
-Create a `Mayhemfile` with the following contents in your copy of the repo:
+Create a `Mayhemfile` with the following contents in your copy of the repo. Be sure to replace <YOUR GITHUB USERNAME> with your GitHub username.
 
 ```
-project: makesoftwaresafe
-target: mayhem-cmake-example
+version: '1.17'
+  
+project: <YOUR GITHUB USERNAME>/mayhem-cmake-example
+target: <YOUR GITHUB USERNAME>
 
-tasks:
-  - name: exploitability_factors
-  - name: regression_testing
-  - name: behavior_testing
-  - name: coverage_analysis
+baseimage: ghcr.io/<YOUR GITHUB USERNAME>/mayhem-cmake-example:mayhem
 
 cmds:
   - cmd: /fuzzme
