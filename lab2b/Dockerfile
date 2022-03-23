@@ -10,7 +10,7 @@ RUN apt-get update && \
 ADD fuzzme.c /
 
 ## Build Step
-RUN gcc fuzzme.c -o fuzzme
+RUN gcc -g fuzzme.c -o fuzzme
 
 # Package Stage
 FROM ubuntu:20.04
