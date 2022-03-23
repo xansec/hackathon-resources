@@ -178,6 +178,9 @@ With your Dockerfile written, you just need to create a Mayhemfile which should 
 Create a `Mayhemfile` with the following contents in your copy of the repo:
 
 ```
+project: makesoftwaresafe
+target: mayhem-cmake-example
+
 tasks:
   - name: exploitability_factors
   - name: regression_testing
@@ -222,13 +225,85 @@ Note that since we're setting up a GitHub Action, we can leave out many of the f
 
 ![Add API Token](assets/images/gh-add-token.png)
 
-## Setup GitHub Action Workflow
+## Setup GitHub Action
 
-1. Create .github/workflows directory.
+With our Dockerfile, Mayhemfile, and Token configured, we're ready to setup the GitHub Action that will run anytime the code changes.
 
-2. Create a new mayhem.yml.
+1. In your forked repository that you've been working in, create a new directory structure like so:
 
-3. Copy the example from https://github.com/ForAllSecure/mcode-action-examples/blob/main/.github/workflows/mayhem.yml
+    ```
+    mkdir -p .github/workflows
+    ```
 
-4. Commit and Push to your fork.
+2. Using your preferred text editor, create a new mayhem.yml with the following contents:
+
+    ```
+    name: Mayhem
+    on:
+      push:
+      pull_request:
+      workflow_dispatch:
+    
+    env:
+      REGISTRY: ghcr.io
+      IMAGE_NAME: ${{ github.repository }}
+    
+    jobs:
+      build:
+        name: '${{ matrix.os }} shared=${{ matrix.shared }} ${{ matrix.build_type }}'
+        runs-on: ${{ matrix.os }}
+        strategy:
+          matrix:
+            os: [ubuntu-latest]
+            shared: [false]
+            build_type: [Release]
+            include:
+              - os: ubuntu-latest
+                triplet: x64-linux
+    
+        steps:
+          - uses: actions/checkout@v2
+    
+          - name: Log in to the Container registry
+            uses: docker/login-action@f054a8b539a109f9f41c372932f1ae047eff08c9
+            with:
+              registry: $
+              username: ${{ github.actor }}
+              password: ${{ secrets.GITHUB_TOKEN }}
+    
+          - name: Extract metadata (tags, labels) for Docker
+            id: meta
+            uses: docker/metadata-action@98669ae865ea3cffbcbaa878cf57c20bbf1c6c38
+            with:
+              images: $/$
+    
+          - name: Build and push Docker image
+            uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
+            with:
+              context: .
+              push: true
+              tags: ${{ steps.meta.outputs.tags }}
+              labels: $
+    
+          - name: Start analysis
+            uses: ForAllSecure/mcode-action@v1
+            with:
+              mayhem-token: ${{ secrets.MAYHEM_TOKEN }}
+              args: --image ${{ steps.meta.outputs.tags }} --corpus file://mayhem/corpus
+              sarif-output: sarif
+    
+          - name: Upload SARIF file(s)
+            uses: github/codeql-action/upload-sarif@v1
+            with:
+              sarif_file: sarif
+    ```
+
+3. Now we'll commit and push our changes onto a new branch called "mayhem":
+
+    ```
+    git checkout -b mayhem
+    git add Dockerfile Mayhem .github/workflows/mayhem.yml
+    git commit -c 'add GitHub action to launch Mayhem'
+    git push -u origin mayhem
+    ```
 
