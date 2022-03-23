@@ -10,21 +10,21 @@ Before we begin, we first must fork the repository.
 
 2. Click "Fork" near the top of the page.
 
-![Fork](assets/images/gh-click-fork.png)
+    ![Fork](assets/images/gh-click-fork.png)
 
 3. When asked where you want to create the fork, select your username.
 
-![Fork to Your Account](assets/images/gh-click-fork.png)
+    ![Fork to Your Account](assets/images/gh-click-fork.png)
 
-Now you have your own fork of the mayhem-cmake-example. Next, we'll clone and run the toy target locally.
+Now you have your own fork of the `mayhem-cmake-example` repo. Next, we'll clone and run the toy target locally.
 
 ## Clone and Run Locally
 
 1. Copy the HTTP Clone URL using the button that can be found on your fork's GitHub page.
 
-![Copy Fork URL](assets/images/gh-get-fork-url.png)
+    ![Copy Fork URL](assets/images/gh-get-fork-url.png)
 
-2. Back in a terminal, enter `git clone ` and paste the URL, then press enter. Your command should look something like this:
+2. Back in a terminal, enter `git clone` and paste the URL, then press enter. Your command should look something like this:
 
     ```
     git clone https://github.com/nathanjackson/mayhem-cmake-example.git
@@ -116,13 +116,13 @@ Congratulations, you've just built a libFuzzer target using CMake! Now, let's tr
 
     If you're stuck, ask!
 
-2. Once you've created your Dockerfile, you can test the build process by running the following command:
+3. Once you've created your Dockerfile, you can test the build process by running the following command:
 
     ```
     docker build -t fuzzme .
     ```
 
-3. If the build succeeded without error, you should be able to run the fuzz target inside the Docker container:
+4. If the build succeeded without error, you should be able to run the fuzz target inside the Docker container:
 
     ```
     docker run --rm -it fuzzme /fuzzme
@@ -195,33 +195,33 @@ Note that since we're setting up a GitHub Action, we can leave out many of the f
 
 1. Navigate to the settings page of your fork.
 
-![Fork Settings](assets/images/gh-fork-settings.png)
+    ![Fork Settings](assets/images/gh-fork-settings.png)
 
 2. Expand the secrets drop down and select "Actions".
 
-![Secrets Dropdown](assets/images/gh-secrets-dropdown.png)
+    ![Secrets Dropdown](assets/images/gh-secrets-dropdown.png)
 
 3. Click "New repository secret".
 
-![New Repo Secret](assets/images/gh-new-repo-secret.png)
+    ![New Repo Secret](assets/images/gh-new-repo-secret.png)
 
 4. Under name enter "MAYHEM_TOKEN".
 
-![Secret Name](assets/images/gh-mayhem-token1.png)
+    ![Secret Name](assets/images/gh-mayhem-token1.png)
 
-3. In another tab or window, open mayhem.forallsecure.com.
+5. In another tab or window, open [mayhem.forallsecure.com](https://mayhem.forallsecure.com/).
 
-4. Copy your API Token in using the "Copy API Token" menu item in the Mayhem web interface.
+6. Copy your API Token in using the "Copy API Token" menu item in the Mayhem web interface.
 
-![Copy API Token](assets/images/mayhem-copy-api-token.png)
+    ![Copy API Token](assets/images/mayhem-copy-api-token.png)
 
-5. Paste the API token into the "Value" field back in the GitHub New repository secret page.
+7. Paste the API token into the "Value" field back in the GitHub New repository secret page.
 
-![Paste API Token](assets/images/gh-mayhem-token2.png)
+    ![Paste API Token](assets/images/gh-mayhem-token2.png)
 
-6. Click Add secret.
+8. Click Add secret.
 
-![Add API Token](assets/images/gh-add-token.png)
+    ![Add API Token](assets/images/gh-add-token.png)
 
 ## Setup GitHub Action
 
