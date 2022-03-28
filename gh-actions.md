@@ -207,15 +207,31 @@ Note that since we're setting up a GitHub Action, we can leave out many of the f
 
 5. In another tab or window, open [mayhem.forallsecure.com](https://mayhem.forallsecure.com/).
 
-6. Copy your API Token in using the "Copy API Token" menu item in the Mayhem web interface.
+6. Click on your user account to reveal a menu and select "Settings".
 
-    ![Copy API Token](assets/images/mayhem-copy-api-token.png)
+    ![Account Settings](assets/images/mayhem-settings.png)
 
-7. Paste the API token into the "Value" field back in the GitHub New repository secret page.
+7. Select "API Tokens".
+
+    ![API Tokens](assets/images/mayhem-api-toks.png)
+
+8. Click "Issue New Token".
+
+    ![Issue New Token](assets/images/mayhem-issue-new.png)
+
+9. Enter a name for your token, I used "Tutorial". Then click Generate.
+
+    ![Enter Token Name](assets/images/mayhem-token-name.png)
+
+10. Click on the copy button to copy the token to your clipboard.
+
+    ![Copy Token](assets/images/mayhem-copy-token.png)
+
+11. Paste the API token into the "Value" field back in the GitHub New repository secret page.
 
     ![Paste API Token](assets/images/gh-mayhem-token2.png)
 
-8. Click Add secret.
+12. Click Add secret.
 
     ![Add API Token](assets/images/gh-add-token.png)
 
