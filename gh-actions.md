@@ -300,5 +300,7 @@ With our Dockerfile, Mayhemfile, and Token configured, we're ready to setup the 
     git commit -m 'add GitHub action to launch Mayhem'
     git push -u origin mayhem
     ```
-
-4. Assuming everything worked, you should now see a new target and run in Mayhem!
+    
+4. Find the workflow run on GitHub and wait for it to fail. Your first workflow run will fail because the package is not visibile. Refer to this page to learn how to change the visibility of the package: https://docs.github.com/en/packages/learn-github-packages/configuring-a-packages-access-control-and-visibility.
+    
+5. With the package now set to public, re-run the failed workflow.
