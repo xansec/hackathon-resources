@@ -77,20 +77,34 @@ This guide will show you how to start a run using the Mayhem CLI.
 ## Step 1. Log in to Mayhem with the CLI
 
 The `mayhem` CLI authenticates to the Mayhem server using an API token. The API
-token  is available three places:
+token can be generated in your profile settings: located in the top-left under your username, then "Settings", then "API Tokens".
 
-   * The [download screen](https://training.forallsecure.com/-/installation)
-   * In your profile settings, located in the top-left under your username, then
-     "Settings", then "API Tokens".
-   * Under the "?" help window. 
+   * Open your settings.
 
-Once you get your API token, log in the CLI:
+![User Settings](assets/images/mayhem-settings.png)
 
+   * Select API Tokens.
+
+![API Tokens](assets/images/mayhem-api-toks.png)
+
+   * Click "Issue New Token".
+
+![New Token](assets/images/mayhem-issue-new.png)
+
+   * Enter a name for the Token.
+
+![Token Name](assets/images/mayhem-token-name.png)
+
+   * Copy the CLI Command.
+
+![Copy CLI Command](assets/images/mayhem-copy-cli-cmd.png)
+
+At this point the entire login command has been copied to your clipboard. Paste this into a terminal window.
+
+The command should look similar to this:
 ```
-mayhem login https://training.forallsecure.com/ <YOUR API KEY>
+mayhem login https://mayhem.forallsecure.com/ <YOUR API KEY>
 ```
-
-![API Token Locations](assets/images/api-token-locations.png)
 
 ## Step 2. Navigate to the Tutorial Directory
 
