@@ -106,13 +106,13 @@ The command should look similar to this:
 mayhem login https://mayhem.forallsecure.com/ <YOUR API KEY>
 ```
 
-## Step 2. Navigate to the Tutorial Directory
+## Step 2. Clone hackathon-resources.
 
-The tutorial assets are already on your lab virtual machine. Change to the
-directory that holds the tutorial "Mayhemfile".
+Clone the hackathon-resources repo and change into the lighttpd directory.
 
 ```
-cd fuzzing-essentials-federal/tutorial/lighttpd/
+git clone https://github.com/makesoftwaresafe/hackathon-resources
+cd hackathon-resources/lighttpd/
 ```
 
 ## Step 3. Start the run with the Mayhem CLI.
