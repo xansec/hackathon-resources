@@ -4,6 +4,7 @@
 
 - [Mayhem Freemium](https://mayhem.forallsecure.com/)
 - [Mayhem Hacking Community](https://community.forallsecure.com/)
+- [Discord Invite](https://discord.gg/yszjX46N)
 
 ## Exercises
 
@@ -11,30 +12,12 @@
 - [Docker + Mayhem Exercise](docker-intro.md)
 - [Mayhem GitHub Action Exercise](gh-actions.md)
 
-## Target Checklist
-
-Targets that you wish to get paid for must meet the following criteria:
-
-* Project must not be part of OSS Fuzz
-
-* Project must be primarily hosted on GitHub, we're not accepting mirrors from other repository hosting services at this time.
-
-* Final Approval up to ForAllSecure at review time.
-
-    - Must be a "popular" project.
-    - If you have any doubt, please reach out on the community before starting.
-    - See the list of curated projects for ideas.
-
-## Suggested Targets
-
-- TBD
-
 
 ## Mayhem Heroes Workflow
 
 1. Select a repository for integration.
 
-    See the target checklist.
+    See the target requirements.
 
 2. Create a fork of the repo you want to integrate.
 
@@ -44,4 +27,37 @@ Targets that you wish to get paid for must meet the following criteria:
 
 5. Once ForAllSecure validates your target and elligiblity, you'll be asked to submit a pull request to the repository under github.com/makesoftwaresafe. If requested during the review, make changes.
 
-6. Once your changes have been merged, you'll be eligible for $250.
+6. Once your changes have been merged, you'll be eligible for $750!
+
+7. ForAllSecure will turn on automatic updates to the repository. At this point you should begin monitoring the repository to ensure that the Mayhem integration still works.
+
+8. After 30 days, you'll be eligible for an additional $250!
+
+## Target Checklist
+
+Targets that you wish to get paid for must meet the following criteria:
+
+* Is a public repository on github.com.  Private repositories are currently not qualified.
+
+* Has 100 or more stars.
+
+* All code is open source and available in source code format.
+
+    - Code is considered Open Source if the entire code base is licensed under one (or more) of the recognized Open Source Initiative Licenses listed at https://opensource.org/licenses/alphabetical. 
+
+* Mayhem is not already integrated. You can find a list of integrated repositories at https://github.com/mayhemheroes.
+
+If in doubt, ask in Discord or on the Mayhem Community.
+
+## Suggested Targets
+
+- TBD
+
+## Troubleshooting Checklist
+
+There are several small configuration steps that you'll need to take on your repo in order to properly integrate a repo with Mayhem. They are easy to miss, so here is a list for your reference:
+
+    * Package has public visibility.
+
+    * Fork repository is configured with a `MAYHEM_TOKEN` secret.
+
