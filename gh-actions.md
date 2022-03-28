@@ -309,11 +309,13 @@ With our Dockerfile, Mayhemfile, and Token configured, we're ready to setup the 
 
     https://docs.github.com/en/packages/learn-github-packages/configuring-a-packages-access-control-and-visibility.
     
-5. With the package now set to public, click on the failed run.
+6. With the package now set to public, click on the failed run.
 
     ![Goto Failed Workflow](assets/images/gh-goto-failed.png)
 
-6. Click the Re-run jobs dropdown and select Re-run failed jobs.
+7. Click the Re-run jobs dropdown and select Re-run failed jobs.
 
     ![Rerun failed](assets/images/gh-rerun-workflow.png)
+
+8. Finally, navigate to mayhem.forallsecure.com. If everything worked correctly, you should see a run for your project that was triggered by GitHub Actions!
 
