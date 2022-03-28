@@ -323,7 +323,7 @@ With our Dockerfile, Mayhemfile, and Token configured, we're ready to setup the 
 
 5. Once the first workflow run fails, refer to these instructions to set the package visibility to public:
 
-    https://docs.github.com/en/packages/learn-github-packages/configuring-a-packages-access-control-and-visibility.
+    ![Change Package Visibility](https://docs.github.com/en/packages/learn-github-packages/configuring-a-packages-access-control-and-visibility#configuring-visibility-of-container-images-for-your-personal-account)
     
 6. With the package now set to public, click on the failed run.
 
