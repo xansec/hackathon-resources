@@ -5,6 +5,7 @@
 - [Mayhem Freemium](https://mayhem.forallsecure.com/)
 - [Mayhem Hacking Community](https://community.forallsecure.com/)
 - [Discord Invite](https://discord.gg/yszjX46N)
+- [Mayhem Heroes GitHub Org](https://github.com/mayhemheroes)
 
 ## Exercises
 
@@ -25,7 +26,7 @@
 
 4. Submit this form: (TBD)
 
-5. Once ForAllSecure validates your target and elligiblity, you'll be asked to submit a pull request to the repository under github.com/makesoftwaresafe. If requested during the review, make changes.
+5. Once ForAllSecure validates your target and elligiblity, you'll be asked to submit a pull request to the repository under github.com/mayhemheroes. If requested during the review, make changes.
 
 6. Once your changes have been merged, you'll be eligible for $750!
 

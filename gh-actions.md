@@ -6,7 +6,7 @@ In this exercise you will setup a GitHub Action that analyzes a toy project auto
 
 Before we begin, we first must fork the repository.
 
-1. In your browser, navigate to https://github.com/makesoftwaresafe/mayhem-cmake-example.
+1. In your browser, navigate to https://github.com/mayhemheroes/mayhem-cmake-example.
 
 2. Click "Fork" near the top of the page.
 

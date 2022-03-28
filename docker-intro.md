@@ -132,7 +132,7 @@ Now that you've logged in to the GitHub container registry, we can build and pus
 1. Clone the hackathon-resources repo and change into the lab2b directory.
 
     ```
-    git clone https://github.com/makesoftwaresafe/hackathon-resources.git
+    git clone https://github.com/mayhemheroes/hackathon-resources.git
     cd hackathon-resources/lab2b/
     ```
 

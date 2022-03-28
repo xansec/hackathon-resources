@@ -111,7 +111,7 @@ mayhem login https://mayhem.forallsecure.com/ <YOUR API KEY>
 Clone the hackathon-resources repo and change into the lighttpd directory.
 
 ```
-git clone https://github.com/makesoftwaresafe/hackathon-resources
+git clone https://github.com/mayhemheroes/hackathon-resources
 cd hackathon-resources/lighttpd/
 ```
 
