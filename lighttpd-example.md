@@ -38,15 +38,13 @@ Let's reproduce an exploit for [lighttpd](https://www.lighttpd.net/)! (version
 ## Step 3. Configure Analysis
 
 There are two tabs of analysis options: Basic and Advanced. We will be configuring three values:
-   1. Under **Basic**, set the analysis to run 30 seconds. If omitted, analysis will run
-      forever in continuous fuzz mode. 
+   1. Under **Basic**, set the analysis to run 90 seconds.
 
-   ![Basic configuration](assets/images/basic-configuration-options.png)
-
+![Basic configuration](assets/images/basic-configuration-options.png)
 
    2. Under **Advanced**, enable the **Advanced Triage** option and the **Code Coverage** task. 
 
-   ![Advanced configuration](assets/images/advanced-configuration-options.png)
+![Advanced configuration](assets/images/advanced-configuration-options.png)
 
    
 ## Step 4. Click start run!
@@ -56,7 +54,7 @@ Click the start run button at the bottom of your screen to begin analysis!
 ![Click start
 run](assets/images/start-run-button.png)
 
-The run may take a few minutes to complete, as analysis and post-analysis
+The run will take a few minutes to complete, as analysis and post-analysis
 processing need to finish. Once the run completes, the web page should look
 similar to this:
 
