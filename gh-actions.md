@@ -301,6 +301,19 @@ With our Dockerfile, Mayhemfile, and Token configured, we're ready to setup the 
     git push -u origin mayhem
     ```
     
-4. Find the workflow run on GitHub and wait for it to fail. Your first workflow run will fail because the package is not visibile. Refer to this page to learn how to change the visibility of the package: https://docs.github.com/en/packages/learn-github-packages/configuring-a-packages-access-control-and-visibility.
+4. When you push the changes in the previous step, GitHub will automatically start the first workflow run. However, it will fail because the default package visibility is set to private. So find the workflow run and wait for it to fail.
+
+    ![Failed Action](assets/images/gh-failed-action.png)
+
+5. Once the first workflow run fails, refer to these instructions to set the package visibility to public:
+
+    https://docs.github.com/en/packages/learn-github-packages/configuring-a-packages-access-control-and-visibility.
     
-5. With the package now set to public, re-run the failed workflow.
+5. With the package now set to public, click on the failed run.
+
+    ![Goto Failed Workflow](assets/images/gh-goto-failed.png)
+
+6. Click the Re-run jobs dropdown and select Re-run failed jobs.
+
+    ![Rerun failed](assets/images/gh-rerun-workflow.png)
+
