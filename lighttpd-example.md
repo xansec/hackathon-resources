@@ -29,11 +29,11 @@ Let's reproduce an exploit for [lighttpd](https://www.lighttpd.net/)! (version
 
    * Create a new project by clicking the "plus" icon at the top of the screen.
 ![Create new project](assets/images/create-new-project.png)
-   * Select the Mayhem docker registry, and the play icon next to the
-   `forallsecure/tutorial/lighttpd` version 1.14.15
-   image. 
-![Choose dockerhub
-   image](assets/images/project-from-registry.png)
+   * On the Choose Image page, enter the following: `forallsecure/lighttpd:vulnerable`.
+![Set Image](assets/images/mayhem-enter-lighttpd.png)
+   * Once you've entered the image, click Next.
+![Click Next](assets/images/mayhem-image-next.png)
+
 
 ## Step 3. Configure Analysis
 
