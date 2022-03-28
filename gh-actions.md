@@ -178,12 +178,8 @@ With your Dockerfile written, you just need to create a Mayhemfile which should 
 Create a `Mayhemfile` with the following contents in your copy of the repo. Be sure to replace <YOUR GITHUB USERNAME> with your GitHub username.
 
 ```
-version: '1.17'
-  
-project: <YOUR GITHUB USERNAME>/mayhem-cmake-example
-target: <YOUR GITHUB USERNAME>
-
-baseimage: ghcr.io/<YOUR GITHUB USERNAME>/mayhem-cmake-example:mayhem
+project: mayhem-cmake-example
+target: fuzzme
 
 cmds:
   - cmd: /fuzzme
@@ -300,7 +296,7 @@ With our Dockerfile, Mayhemfile, and Token configured, we're ready to setup the 
 
     ```
     git checkout -b mayhem
-    git add Dockerfile Mayhem .github/workflows/mayhem.yml
+    git add Dockerfile Mayhemfile .github/workflows/mayhem.yml
     git commit -c 'add GitHub action to launch Mayhem'
     git push -u origin mayhem
     ```
