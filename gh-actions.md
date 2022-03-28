@@ -319,7 +319,7 @@ With our Dockerfile, Mayhemfile, and Token configured, we're ready to setup the 
     
 4. When you push the changes in the previous step, GitHub will automatically start the first workflow run. However, it will fail because the default package visibility is set to private. So find the workflow run and wait for it to fail.
 
-    ![Failed Action](assets/images/gh-failed-action.png)
+    ![Failed Action](assets/images/gh-wait-failed.png)
 
 5. Once the first workflow run fails, refer to these instructions to set the package visibility to public:
 
