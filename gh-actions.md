@@ -297,7 +297,7 @@ With our Dockerfile, Mayhemfile, and Token configured, we're ready to setup the 
     ```
     git checkout -b mayhem
     git add Dockerfile Mayhemfile .github/workflows/mayhem.yml
-    git commit -c 'add GitHub action to launch Mayhem'
+    git commit -m 'add GitHub action to launch Mayhem'
     git push -u origin mayhem
     ```
 
