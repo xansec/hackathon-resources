@@ -44,7 +44,7 @@ usage: ./fuzzme PAYLOAD
 
 Congratulations, you've just built an executable using CMake!
 
-## libFuzzer Exercise
+# libFuzzer Exercise
 
 We could analyze our `fuzzme` executable as-is in Mayhem, but let's convert this into a libFuzzer target to take advantage of libFuzzer's extra features.
 
