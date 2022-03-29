@@ -11,8 +11,9 @@
 
 - [lighttpd exercise](lighttpd-example.md)
 - [Docker + Mayhem Exercise](docker-intro.md)
+- [CMake Exercise](cmake-libfuzzer-exercise.md#cmake-exercise)
+- [libFuzzer Exercise](cmake-libfuzzer-exercise.md#libfuzzer-exercise)
 - [Mayhem GitHub Action Exercise](gh-actions.md)
-
 
 ## Mayhem Heroes Workflow
 
