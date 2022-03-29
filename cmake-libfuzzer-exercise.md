@@ -1,4 +1,4 @@
-# CMake + libFuzzer Exercise
+# CMake Exercise
 
 In this exercise you will build and run a CMake executable.
 
@@ -44,7 +44,7 @@ usage: ./fuzzme PAYLOAD
 
 Congratulations, you've just built an executable using CMake!
 
-## Convert fuzzme to a libFuzzer Target
+## libFuzzer Exercise
 
 We could analyze our `fuzzme` executable as-is in Mayhem, but let's convert this into a libFuzzer target to take advantage of libFuzzer's extra features.
 
