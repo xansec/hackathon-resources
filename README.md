@@ -6,6 +6,8 @@
 - [Mayhem Hacking Community](https://community.forallsecure.com/)
 - [Discord Invite](https://discord.gg/yszjX46N)
 - [Mayhem Heroes GitHub Org](https://github.com/mayhemheroes)
+- [Survey 1 (Training)](https://dydbdnwi0qu.typeform.com/to/jZEKf0it)
+- [Survey 2 (Hackathon)](https://dydbdnwi0qu.typeform.com/to/gyUrPXDM)
 
 ## Exercises
 
