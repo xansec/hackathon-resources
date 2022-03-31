@@ -74,7 +74,19 @@ This guide will show you how to start a run using the Mayhem CLI.
 
 **Time to complete**: About 5 minutes
 
-## Step 1. Log in to Mayhem with the CLI
+## Step 1. Install the Mayhem CLI
+
+Before using the Mayhem CLI, you need to install it. Fortunately, Mayhem provides instructions for you.
+
+   * Click on "Download Mayhem CLI"
+
+![Download CLI](assets/images/mayhem-download-cli.png)
+
+   * Follow the on-screen instructions.
+
+![Onscreen Instructions](assets/images/mayhem-cli-instructions.png)
+
+## Step 2. Log in to Mayhem with the CLI
 
 The `mayhem` CLI authenticates to the Mayhem server using an API token. The API
 token can be generated in your profile settings: located in the top-left under your username, then "Settings", then "API Tokens".
@@ -106,7 +118,7 @@ The command should look similar to this:
 mayhem login https://mayhem.forallsecure.com/ <YOUR API KEY>
 ```
 
-## Step 2. Clone hackathon-resources.
+## Step 3. Clone hackathon-resources.
 
 Clone the hackathon-resources repo and change into the lighttpd directory.
 
@@ -115,7 +127,7 @@ git clone https://github.com/mayhemheroes/hackathon-resources
 cd hackathon-resources/lighttpd/
 ```
 
-## Step 3. Start the run with the Mayhem CLI.
+## Step 4. Start the run with the Mayhem CLI.
 
 For this tutorial, no changes to the Mayhemfile are neccesary. We're starting
 the same run as in lab 1a, but this time with the CLI.
