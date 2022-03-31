@@ -61,7 +61,7 @@ If in doubt, ask in Discord or on the Mayhem Community.
 
 There are several small configuration steps that you'll need to take on your repo in order to properly integrate a repo with Mayhem. They are easy to miss, so here is a list for your reference:
 
-    * Package has public visibility.
+* Package has public visibility.
 
-    * Fork repository is configured with a `MAYHEM_TOKEN` secret.
+* Fork repository is configured with a `MAYHEM_TOKEN` secret.
 
