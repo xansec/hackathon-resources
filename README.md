@@ -6,6 +6,7 @@
 - [Mayhem Hacking Community](https://community.forallsecure.com/)
 - [Discord Invite](https://discord.gg/yszjX46N)
 - [Mayhem Heroes GitHub Org](https://github.com/mayhemheroes)
+- [Target List](https://docs.google.com/spreadsheets/d/1pUQTws6HAD1DXXMZRi3gDH_sdmIaTp5St97oyUKNE5E/edit)
 - [Survey 1 (Training)](https://dydbdnwi0qu.typeform.com/to/jZEKf0it)
 - [Survey 2 (Hackathon)](https://dydbdnwi0qu.typeform.com/to/gyUrPXDM)
 
@@ -53,10 +54,9 @@ Targets that you wish to get paid for must meet the following criteria:
 
 If in doubt, ask in Discord or on the Mayhem Community.
 
-## Suggested Targets
+## Targets
 
-- TBD
-
+- 
 ## Troubleshooting Checklist
 
 There are several small configuration steps that you'll need to take on your repo in order to properly integrate a repo with Mayhem. They are easy to miss, so here is a list for your reference:
