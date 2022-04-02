@@ -24,6 +24,4 @@ cmds:
     network:
       url: tcp://localhost:80
       timeout: 2
-      is_client: false
-    env: {}
 
