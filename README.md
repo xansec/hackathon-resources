@@ -9,6 +9,7 @@
 - [Target List](https://docs.google.com/spreadsheets/d/1cFwb9ZQMGRrZk8NxaGYX54Qdk3rN53ZW1k3SA36jyR8/edit?usp=sharing)
 - [Survey 1 (Training)](https://dydbdnwi0qu.typeform.com/to/jZEKf0it)
 - [Survey 2 (Hackathon)](https://dydbdnwi0qu.typeform.com/to/gyUrPXDM)
+- [Submission Form](https://dydbdnwi0qu.typeform.com/to/l6MK0WJp)
 
 ## Exercises
 
@@ -28,7 +29,7 @@
 
 3. Integrate Mayhem into your Fork.
 
-4. Submit this form: (TBD)
+4. Submit this form: https://dydbdnwi0qu.typeform.com/to/l6MK0WJp
 
 5. Once ForAllSecure validates your target and elligiblity, you'll be asked to submit a pull request to the repository under github.com/mayhemheroes. If requested during the review, make changes.
 
@@ -54,9 +55,6 @@ Targets that you wish to get paid for must meet the following criteria:
 
 If in doubt, ask in Discord or on the Mayhem Community.
 
-## Targets
-
-- 
 ## Troubleshooting Checklist
 
 There are several small configuration steps that you'll need to take on your repo in order to properly integrate a repo with Mayhem. They are easy to miss, so here is a list for your reference:
