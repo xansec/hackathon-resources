@@ -122,54 +122,6 @@ cmds:
 
 Note that since we're setting up a GitHub Action, we can leave out many of the fields that would otherwise be required. The GitHub Action will automatically generate the fields for us.
 
-## Setup your MAYHEM_TOKEN Repository Secret
-
-1. Navigate to the settings page of your fork.
-
-    ![Fork Settings](assets/images/gh-fork-settings.png)
-
-2. Expand the secrets drop down and select "Actions".
-
-    ![Secrets Dropdown](assets/images/gh-secrets-dropdown.png)
-
-3. Click "New repository secret".
-
-    ![New Repo Secret](assets/images/gh-new-repo-secret.png)
-
-4. Under name enter "MAYHEM_TOKEN".
-
-    ![Secret Name](assets/images/gh-mayhem-token1.png)
-
-5. In another tab or window, open [mayhem.forallsecure.com](https://mayhem.forallsecure.com/).
-
-6. Click on your user account to reveal a menu and select "Settings".
-
-    ![Account Settings](assets/images/mayhem-settings.png)
-
-7. Select "API Tokens".
-
-    ![API Tokens](assets/images/mayhem-api-toks.png)
-
-8. Click "Issue New Token".
-
-    ![Issue New Token](assets/images/mayhem-issue-new.png)
-
-9. Enter a name for your token, I used "Tutorial". Then click Generate.
-
-    ![Enter Token Name](assets/images/mayhem-token-name.png)
-
-10. Click on the copy button to copy the token to your clipboard.
-
-    ![Copy Token](assets/images/mayhem-copy-token.png)
-
-11. Paste the API token into the "Value" field back in the GitHub New repository secret page.
-
-    ![Paste API Token](assets/images/gh-mayhem-token2.png)
-
-12. Click Add secret.
-
-    ![Add API Token](assets/images/gh-add-token.png)
-
 ## Setup GitHub Action
 
 With our Dockerfile, Mayhemfile, and Token configured, we're ready to setup the GitHub Action that will run anytime the code changes.
