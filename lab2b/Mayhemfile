@@ -1,6 +1,3 @@
-# Mayhemfile version specifier
-version: '1.17'
-
 # Namespaced project name that the target belongs to
 project: hackathon
 
@@ -8,7 +5,7 @@ project: hackathon
 target: fuzzme
 
 # Base image to run the binary in.
-baseimage: ghcr.io/<YOUR GITHUB USERNAME>/fuzzme:latest
+image: ghcr.io/<YOUR GITHUB USERNAME>/fuzzme:latest
 
 # List of commands used to test the target
 cmds:
