@@ -230,9 +230,6 @@ Now that you've pushed your image to Mayhem, let's kick off a run.
 1. Using your favorite text editor, modify the Mayhemfile. Replace <YOUR GITHUB USERNAME> with your GitHub username. Your Mayhemfile should look similar to this:
 
     ```yaml
-    # Mayhemfile version specifier
-    version: '1.17'
-
     # Namespaced project name that the target belongs to
     project: nathanjackson/hackathon
 
@@ -240,7 +237,7 @@ Now that you've pushed your image to Mayhem, let's kick off a run.
     target: fuzzme
 
     # Base image to run the binary in.
-    baseimage: ghcr.io/nathanjackson/fuzzme:latest
+    image: ghcr.io/nathanjackson/fuzzme:latest
 
     # List of commands used to test the target
     cmds:
