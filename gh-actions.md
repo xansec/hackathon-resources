@@ -220,5 +220,10 @@ With our Dockerfile, Mayhemfile, and Token configured, we're ready to setup the 
 
     ![Rerun failed](assets/images/gh-rerun-workflow.png)
 
-8. Finally, navigate to mayhem.forallsecure.com. If everything worked correctly, you should see a run for your project that was triggered by GitHub Actions!
+8. The run should succeed this time. If you select the run and scroll down to the "Start Analysis" phase, you should see the link to the corresponding Mayhem run at the end of the output, here:
 
+    ![Mayhem Run Link](assets/images/start-analysis-run-link.png)
+    
+    Select that link and it should bring you to your Mayhem run. Congratulations, you've integrated a repository with Mayhem!
+
+   
