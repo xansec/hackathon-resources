@@ -195,7 +195,7 @@ With our Dockerfile, Mayhemfile, and Token configured, we're ready to setup the 
               sarif_file: sarif
     ```
 
-3. Now we'll commit and push our changes onto a new branch called "mayhem":
+3. Now we'll commit and push our changes onto a new branch called "mayhem". (You may need to give Github a username and personal access token. This is where you can use the token you created from the Docker+Mayhem exercise!):
 
     ```
     git checkout -b mayhem
