@@ -163,3 +163,43 @@ You've just:
 
 <walkthrough-conclusion-trophy></walkthrough-conclusion-trophy>
 
+### Bonus: Step 5. Reproduce your crash locally.
+
+Once the run finishes, we should have found a defect in our lighttpd server. We can actually verify that this is a real bug by running the crashing test cases locally. Let's grab the test cases we generated in Mayhem. We can do this by sync'ing our directory with the Mayhem target:
+```
+mayhem sync .
+WARNING: downloading file with sha {sha256} project_slug {project_slug} owner {owner}
+Downloaded: Mayhemfile.
+Downloading tests.tar:  40.0 KiB |    #                                                                                                                                      | Elapsed Time: 0:00:00  80.6 KiB/s
+Extracting tests 14 of 14 |#####################################################################################################################################################################| Time:  0:00:00
+Successfully downloaded coverage
+Target synced at: '.'.
+
+ls 
+block_coverage.drcov  defects  func_coverage.json  line_coverage.lcov  Mayhemfile  tests
+
+```
+
+All of our crashing test cases are saved under `defects/`. Let's run our vulnerable lighttpd server using `docker run` (this will be explained in detail in the next lab, stay tuned!):
+
+```
+docker run --name lighttpd forallsecure/lighttpd:vulnerable 
+2022-04-15 15:52:25: (log.c.75) server started 
+```
+We now have lighttpd running locally on our machine. Open another terminal, and run the following command to see what IP address it's listening on:
+```
+docker inspect lighttpd | grep IPAddress
+            "SecondaryIPAddresses": null,
+            "IPAddress": "172.17.0.5",
+                    "IPAddress": "172.17.0.5",
+```
+Looks like our server is listening on `172.17.0.5`. We can use netcat (`nc`) to send arbitrary messages to an IP address and port. Run the following command to send the crashing test case to our running lighttpd server:
+
+```
+nc 172.17.0.5 80 < defects/ba0dbafbd0b787a564635b887f77926ae0b3f979dcc72d30cf7fdb1707581919
+```
+
+Switch back to our terminal with lighttpd running. You should notice that it's... no longer running.
+
+
+
