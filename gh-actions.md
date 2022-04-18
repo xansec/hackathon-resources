@@ -54,13 +54,13 @@ In the CMake and libFuzzer exercises, we cloned the original or "upstream" mayhe
 3. Once you've created your Dockerfile, you can test the build process by running the following command:
 
     ```
-    docker build -t fuzzme .
+    docker build -t ghcr.io/<Your Github Username>/fuzzme:latest .
     ```
 
 4. If the build succeeded without error, you should be able to run the fuzz target inside the Docker container:
 
     ```
-    docker run --rm -it fuzzme /fuzzme
+    docker run --rm -it ghcr.io/<Your Github Username>/fuzzme /fuzzme
     ```
 
 At the end you should see the the libFuzzer output again:
@@ -104,7 +104,18 @@ artifact_prefix='./'; Test unit written to ./crash-6885858486f31043e5839c735d994
 Base64: YnVn
 ```
 
-If this is what you saw, congratulations you just automated the build and package process! Now its time to create our Mayhemfile and setup the GitHub Action.
+If this is what you saw, congratulations you just automated the build and package process! 
+
+5. Now that the image is built,, push the image to the registry like last time:
+
+```
+docker push ghcr.io/<Your GitHub Username>/fuzzme:latest
+```
+
+**Note:** If you have not already completed the [Docker+Mayhem tutorial](https://github.com/mayhemheroes/hackathon-resources/blob/main/docker-intro.md) section on making packages public, you may need to [go through the steps here](https://github.com/mayhemheroes/hackathon-resources/blob/main/docker-intro.md#build-and-push-the-docker-image) to make the package public.
+
+
+Now it's time to create our Mayhemfile and setup the GitHub Action.
 
 ## Add a Mayhemfile
 
@@ -204,23 +215,7 @@ With our Dockerfile, Mayhemfile, and Token configured, we're ready to setup the 
     git push -u origin mayhem
     ```
     
-4. When you push the changes in the previous step, GitHub will automatically start the first workflow run. However, it will fail because the default package visibility is set to private. So find the workflow run and wait for it to fail.
-
-    ![Failed Action](assets/images/gh-wait-failed.png)
-
-5. Once the first workflow run fails, refer to these instructions to set the package visibility to public:
-
-    [Change Package Visibility](https://docs.github.com/en/packages/learn-github-packages/configuring-a-packages-access-control-and-visibility#configuring-visibility-of-container-images-for-your-personal-account)
-    
-6. With the package now set to public, click on the failed run.
-
-    ![Goto Failed Workflow](assets/images/gh-goto-failed.png)
-
-7. Click the Re-run jobs dropdown and select Re-run failed jobs.
-
-    ![Rerun failed](assets/images/gh-rerun-workflow.png)
-
-8. The run should succeed this time. If you select the run and scroll down to the "Start Analysis" phase, you should see the link to the corresponding Mayhem run at the end of the output, here:
+4. When you push the changes in the previous step, GitHub will automatically start the first workflow run. If you select the run and scroll down to the "Start Analysis" phase, you should see the link to the corresponding Mayhem run at the end of the output, here:
 
     ![Mayhem Run Link](assets/images/start-analysis-run-link.png)
     
