@@ -112,7 +112,7 @@ If this is what you saw, congratulations you just automated the build and packag
 docker push ghcr.io/<Your GitHub Username>/fuzzme:latest
 ```
 
-**Note:** If you have not already completed the [Docker+Mayhem tutorial](https://github.com/mayhemheroes/hackathon-resources/blob/main/docker-intro.md) section on making packages public, you may need to [go through the steps here](https://github.com/mayhemheroes/hackathon-resources/blob/main/docker-intro.md#build-and-push-the-docker-image) to make the package public.
+    **Note:** If you have not already completed the [Docker+Mayhem tutorial](https://github.com/mayhemheroes/hackathon-resources/blob/main/docker-intro.md) section on making packages public, you may need to [go through the steps here](https://github.com/mayhemheroes/hackathon-resources/blob/main/docker-intro.md#build-and-push-the-docker-image) to make the package public.
 
 
 Now it's time to create our Mayhemfile and setup the GitHub Action.
