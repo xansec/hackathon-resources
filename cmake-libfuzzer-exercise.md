@@ -101,6 +101,12 @@ We could analyze our `fuzzme` executable as-is in Mayhem, but let's convert this
     CC=clang CXX=clang++ cmake ..
     ```
 
+   Note, if you're on macOS, you need to use a different, non-Apple Clang. We suggest using Homebrew (see the development environment instructions). However, you will need to change CC and CXX variables to reflect the location where the clang is located. If you're using the homebrew llvm package, you can use this command:
+
+   ```
+   CC=/opt/homebrew/Cellar/llvm/13.0.1_1/bin/clang CXX=/opt/homebrew/Cellar/llvm/13.0.1_1/bin/clang++ cmake .. 
+   ```
+
 8. Now run `make` to build.
 
 9. You should  now have a new `fuzzme` executable. Run it.
