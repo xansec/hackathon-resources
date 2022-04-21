@@ -167,6 +167,8 @@ You've just:
 
 Note: this will introduce running a target with Docker, which we will go over in more detail in the next section.
 
+There are different steps for reproducing on Linux vs. macOS. Refer to the Linux and macOS sections respectively for your situation.
+
 #### Linux
 
 The Mayhem run should have produced a crashing input for lighttpd. We can reproduce that crash locally. Download the test cases from the run by running `mayhem sync` in the same directory you ran `mayhem run`:
