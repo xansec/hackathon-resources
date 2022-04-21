@@ -54,13 +54,13 @@ In the CMake and libFuzzer exercises, we cloned the original or "upstream" mayhe
 3. Once you've created your Dockerfile, you can test the build process by running the following command:
 
     ```
-    docker build -t ghcr.io/<Your Github Username>/fuzzme:latest .
+    docker build -t ghcr.io/<Your Github Username>/mayhem-cmake-example:latest .
     ```
 
 4. If the build succeeded without error, you should be able to run the fuzz target inside the Docker container:
 
     ```
-    docker run --rm -it ghcr.io/<Your Github Username>/fuzzme /fuzzme
+    docker run --rm -it ghcr.io/<Your Github Username>/mayhem-cmake-example /fuzzme
     ```
 
 At the end you should see the the libFuzzer output again:
@@ -109,11 +109,12 @@ If this is what you saw, congratulations you just automated the build and packag
 5. Now that the image is built,, push the image to the registry like last time:
 
 ```
-docker push ghcr.io/<Your GitHub Username>/fuzzme:latest
+docker push ghcr.io/<Your GitHub Username>/mayhem-cmake-example:latest
 ```
 
-   **Note:** If you have not already completed the [Docker+Mayhem tutorial](https://github.com/mayhemheroes/hackathon-resources/blob/main/docker-intro.md) section on making packages public, you may need to [go through the steps here](https://github.com/mayhemheroes/hackathon-resources/blob/main/docker-intro.md#build-and-push-the-docker-image) to make the package public.
+6. Next mark the package as public following these steps in GitHub: https://docs.github.com/en/packages/learn-github-packages/configuring-a-packages-access-control-and-visibility#configuring-access-to-container-images-for-your-personal-account
 
+7. Finally, link the package to your mayhem-cmake-example following these steps in the GitHub documentation: https://docs.github.com/en/packages/learn-github-packages/connecting-a-repository-to-a-package#connecting-a-repository-to-a-user-owned-package-on-github
 
 Now it's time to create our Mayhemfile and setup the GitHub Action.
 
