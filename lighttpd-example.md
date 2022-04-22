@@ -163,3 +163,99 @@ You've just:
 
 <walkthrough-conclusion-trophy></walkthrough-conclusion-trophy>
 
+### Bonus: Step 5. Reproduce the defect locally
+
+Note: this will introduce running a target with Docker, which we will go over in more detail in the next section.
+
+There are different steps for reproducing on Linux vs. macOS. Refer to the Linux and macOS sections respectively for your situation.
+
+#### Linux
+
+The Mayhem run should have produced a crashing input for lighttpd. We can reproduce that crash locally. Download the test cases from the run by running `mayhem sync` in the same directory you ran `mayhem run`:
+```
+mayhem sync . 
+WARNING: downloading file with sha {sha256} project_slug {project_slug} owner {owner}
+Downloaded: Mayhemfile.
+Downloading tests.tar:  40.0 KiB |   #                                                                                                                                       | Elapsed Time: 0:00:00 114.8 KiB/s
+Extracting tests 14 of 14 |#####################################################################################################################################################################| Time:  0:00:00
+Successfully downloaded coverage
+Target synced at: '.'.
+
+ls 
+block_coverage.drcov  defects  func_coverage.json  line_coverage.lcov  Mayhemfile  tests
+```
+We see that we have a `defects/` folder and a `tests/` folder. We can test sending our crashing test case (under the defects/ folder) to our vulnerable version of lighttpd. To run this server, simply pass the image name to `docker run`, like so:
+```
+docker run --name lighttpd forallsecure/lighttpd:vulnerable 
+2022-04-15 20:52:14: (log.c.75) server started 
+```
+Now, if we open another terminal, we can send the crashing test case to our running server. To figure out where the server is, run `docker inspect` (and look for IPAddress):
+```
+docker inspect lighttpd | grep "IPAddress" 
+            "SecondaryIPAddresses": null,
+            "IPAddress": "172.17.0.5",
+                    "IPAddress": "172.17.0.5",
+```
+We see that lighttpd is running on `172.17.0.5`...
+```
+ls defects/
+ba0dbafbd0b787a564635b887f77926ae0b3f979dcc72d30cf7fdb1707581919
+```
+And `ba0dbafbd0b787a564635b887f77926ae0b3f979dcc72d30cf7fdb1707581919` is the hash for our crashing test case. Now we have the info we need to reproduce the crash. We use netcat (`nc`) to send our crashing test case to our lighttpd server on port 80:
+```
+nc 172.17.0.5 80 < ./tests/ba0dbafbd0b787a564635b887f77926ae0b3f979dcc72d30cf7fdb1707581919
+```
+If we switch back to the first terminal, we should see... nothing. The server is no longer running (it crashed!)
+```
+docker run --name lighttpd forallsecure/lighttpd:vulnerable 
+2022-04-15 20:52:14: (log.c.75) server started 
+                                                                                                                   SEGV ✘ 
+```
+
+Congratulations! You've reproduced your first defect!
+
+#### macOS
+
+Due to limitations with Docker for Mac, we have separate instructions to demonstrate reproducing the lighttpd vulnerability.
+
+```
+mayhem sync . 
+WARNING: downloading file with sha {sha256} project_slug {project_slug} owner {owner}
+Downloaded: Mayhemfile.
+Downloading tests.tar:  40.0 KiB |   #                                                                                                                                       | Elapsed Time: 0:00:00 114.8 KiB/s
+Extracting tests 14 of 14 |#####################################################################################################################################################################| Time:  0:00:00
+Successfully downloaded coverage
+Target synced at: '.'.
+
+ls 
+block_coverage.drcov  defects  func_coverage.json  line_coverage.lcov  Mayhemfile  tests
+```
+
+Start a bash shell inside the container:
+
+```
+docker run --name lighttpd -it -v $PWD:/lighttpd forallsecure/lighttpd:vulnerable bash
+```
+
+Launch lighttpd inside the container:
+```
+/usr/local/sbin/lighttpd -D -f /usr/local/etc/lighttpd.conf
+```
+
+In another terminal window, enter the same container with another bash shell:
+```
+docker exec -it lighttpd bash
+```
+
+In the second bash shell, install netcat:
+```
+apt-get update && apt-get install -y netcat
+```
+
+Send the payload to the running lighttpd server:
+```
+nc 127.0.0.1 80 < /lighttpd/tests/ba0dbafbd0b787a564635b887f77926ae0b3f979dcc72d30cf7fdb1707581919
+```
+
+You should see in the first terminal window that lighttpd crashed!
+

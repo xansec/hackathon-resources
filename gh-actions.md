@@ -54,13 +54,13 @@ In the CMake and libFuzzer exercises, we cloned the original or "upstream" mayhe
 3. Once you've created your Dockerfile, you can test the build process by running the following command:
 
     ```
-    docker build -t fuzzme .
+    docker build -t ghcr.io/<Your Github Username>/mayhem-cmake-example:latest .
     ```
 
 4. If the build succeeded without error, you should be able to run the fuzz target inside the Docker container:
 
     ```
-    docker run --rm -it fuzzme /fuzzme
+    docker run --rm -it ghcr.io/<Your Github Username>/mayhem-cmake-example /fuzzme
     ```
 
 At the end you should see the the libFuzzer output again:
@@ -104,7 +104,19 @@ artifact_prefix='./'; Test unit written to ./crash-6885858486f31043e5839c735d994
 Base64: YnVn
 ```
 
-If this is what you saw, congratulations you just automated the build and package process! Now its time to create our Mayhemfile and setup the GitHub Action.
+If this is what you saw, congratulations you just automated the build and package process! 
+
+5. Now that the image is built,, push the image to the registry like last time:
+
+```
+docker push ghcr.io/<Your GitHub Username>/mayhem-cmake-example:latest
+```
+
+6. Next mark the package as public following these steps in GitHub: https://docs.github.com/en/packages/learn-github-packages/configuring-a-packages-access-control-and-visibility#configuring-access-to-container-images-for-your-personal-account
+
+7. Finally, link the package to your mayhem-cmake-example following these steps in the GitHub documentation: https://docs.github.com/en/packages/learn-github-packages/connecting-a-repository-to-a-package#connecting-a-repository-to-a-user-owned-package-on-github
+
+Now it's time to create our Mayhemfile and setup the GitHub Action.
 
 ## Add a Mayhemfile
 
@@ -195,7 +207,7 @@ With our Dockerfile, Mayhemfile, and Token configured, we're ready to setup the 
               sarif_file: sarif
     ```
 
-3. Now we'll commit and push our changes onto a new branch called "mayhem":
+3. Now we'll commit and push our changes onto a new branch called "mayhem". (You may need to give Github a username and personal access token. This is where you can use the token you created from the Docker+Mayhem exercise!):
 
     ```
     git checkout -b mayhem
@@ -204,21 +216,10 @@ With our Dockerfile, Mayhemfile, and Token configured, we're ready to setup the 
     git push -u origin mayhem
     ```
     
-4. When you push the changes in the previous step, GitHub will automatically start the first workflow run. However, it will fail because the default package visibility is set to private. So find the workflow run and wait for it to fail.
+4. When you push the changes in the previous step, GitHub will automatically start the first workflow run. If you select the run and scroll down to the "Start Analysis" phase, you should see the link to the corresponding Mayhem run at the end of the output, here:
 
-    ![Failed Action](assets/images/gh-wait-failed.png)
-
-5. Once the first workflow run fails, refer to these instructions to set the package visibility to public:
-
-    [Change Package Visibility](https://docs.github.com/en/packages/learn-github-packages/configuring-a-packages-access-control-and-visibility#configuring-visibility-of-container-images-for-your-personal-account)
+    ![Mayhem Run Link](assets/images/start-analysis-run-link.png)
     
-6. With the package now set to public, click on the failed run.
+    Select that link and it should bring you to your Mayhem run. Congratulations, you've integrated a repository with Mayhem!
 
-    ![Goto Failed Workflow](assets/images/gh-goto-failed.png)
-
-7. Click the Re-run jobs dropdown and select Re-run failed jobs.
-
-    ![Rerun failed](assets/images/gh-rerun-workflow.png)
-
-8. Finally, navigate to mayhem.forallsecure.com. If everything worked correctly, you should see a run for your project that was triggered by GitHub Actions!
-
+   

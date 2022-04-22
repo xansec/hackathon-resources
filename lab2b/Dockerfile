@@ -1,6 +1,6 @@
 # Build Stage:
 
-FROM ubuntu:20.04 as builder
+FROM --platform=linux/amd64 ubuntu:20.04 as builder
 
 ## Install build dependencies.
 RUN apt-get update && \
@@ -13,7 +13,7 @@ ADD fuzzme.c /
 RUN gcc -g fuzzme.c -o fuzzme
 
 # Package Stage
-FROM ubuntu:20.04
+FROM --platform=linux/amd64 ubuntu:20.04
 
 COPY --from=builder /fuzzme /
 
