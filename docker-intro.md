@@ -223,6 +223,8 @@ Now that you've logged in to the GitHub container registry, we can build and pus
     * In the Change package visibility dialog, set the visibility to public, type the name "fuzzme" to confirm, and click "I understand..."
 
         ![Change Visibility](assets/images/gh-change-vis.png)
+        
+**Note:** If you haven't already, be sure to link the package to the repository as described here: https://docs.github.com/en/packages/learn-github-packages/connecting-a-repository-to-a-package#connecting-a-repository-to-a-user-owned-package-on-github
 
 ## Start a Mayhem Run
 
