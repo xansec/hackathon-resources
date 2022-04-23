@@ -244,7 +244,7 @@ Due to limitations with Docker for Mac, we have separate instructions to demonst
 ```
 $ mayhem sync . 
 ```
-
+The output would be: 
 ```
 WARNING: downloading file with sha {sha256} project_slug {project_slug} owner {owner}
 Downloaded: Mayhemfile.
@@ -253,11 +253,11 @@ Extracting tests 14 of 14 |#####################################################
 Successfully downloaded coverage
 Target synced at: '.'.
 ```
-
+Now check the files in the directory
 ```
 $ ls 
 ```
-
+It would show: 
 ```
 block_coverage.drcov  defects  func_coverage.json  line_coverage.lcov  Mayhemfile  tests
 ```
