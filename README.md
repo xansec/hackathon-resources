@@ -53,6 +53,8 @@ Targets that you wish to get paid for must meet the following criteria:
 
 * Mayhem is not already integrated. You can find a list of integrated repositories at https://github.com/mayhemheroes.
 
+* The project is not part of oss-fuzz.
+
 If in doubt, ask in Discord or on the Mayhem Community.
 
 ## Troubleshooting Checklist
