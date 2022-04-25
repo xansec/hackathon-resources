@@ -55,6 +55,8 @@ Targets that you wish to get paid for must meet the following criteria:
 
 * The project is not part of oss-fuzz.
 
+* The resulting Mayhem run generates > 10 new test cases.
+
 If in doubt, ask in Discord or on the Mayhem Community.
 
 ## Troubleshooting Checklist
