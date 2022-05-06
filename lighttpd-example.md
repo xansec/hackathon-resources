@@ -123,8 +123,8 @@ mayhem login https://mayhem.forallsecure.com/ <YOUR API KEY>
 Clone the hackathon-resources repo and change into the lighttpd directory.
 
 ```
-$ git clone https://github.com/mayhemheroes/hackathon-resources
-$ cd hackathon-resources/lighttpd/
+git clone https://github.com/mayhemheroes/hackathon-resources
+cd hackathon-resources/lighttpd/
 ```
 
 ## Step 4. Start the run with the Mayhem CLI.
@@ -133,7 +133,7 @@ For this tutorial, no changes to the Mayhemfile are neccesary. We're starting
 the same run as in lab 1a, but this time with the CLI.
 
 ```
-$ mayhem run .
+mayhem run .
 ```
 
 You should see output that looks similar to this:
@@ -173,7 +173,7 @@ There are different steps for reproducing on Linux vs. macOS. Refer to the Linux
 
 The Mayhem run should have produced a crashing input for lighttpd. We can reproduce that crash locally. Download the test cases from the run by running `mayhem sync` in the same directory you ran `mayhem run`:
 ```
-$ mayhem sync . 
+mayhem sync . 
 ```
 
 This would give the output:
@@ -186,63 +186,61 @@ Successfully downloaded coverage
 Target synced at: '.'.
 ```
 
-Now if you were to check the files in your directory
+Now if you were to check the files in your directory:
 ```
-$ ls 
+ls 
 ```
-It would show something like
+It would show something like:
 ```
 block_coverage.drcov  defects  func_coverage.json  line_coverage.lcov  Mayhemfile  tests
 ```
-We see that we have a `defects/` folder and a `tests/` folder. We can test sending our crashing test case (under the defects/ folder) to our vulnerable version of lighttpd. To run this server, simply pass the image name to `docker run`, like so:
+We see that we have a `defects/` folder and a `tests/` folder. We can test sending our crashing test case (under the defects/ folder) to our vulnerable version of lighttpd:
 ```
-$ docker run --name lighttpd forallsecure/lighttpd:vulnerable 
+ls defects/
+```
+Which shows the defect test case hash: 
+```
+ba0dbafbd0b787a564635b887f77926ae0b3f979dcc72d30cf7fdb1707581919
 ```
 
-Will give the output
+To run the lighttpd server, simply pass the image name to `docker run`, like so:
+```
+docker run --name lighttpd forallsecure/lighttpd:vulnerable 
+```
+
+This will give the output:
 ```
 2022-04-15 20:52:14: (log.c.75) server started 
 ```
 Now, if we open another terminal, we can send the crashing test case to our running server. To figure out where the server is, run `docker inspect` (and look for IPAddress):
 ```
-$ docker inspect lighttpd | grep "IPAddress" 
+docker inspect lighttpd | grep "IPAddress" 
 ```
-This command would point us to the IP Address
+This command would point us to the IP Address:
 ```
             "SecondaryIPAddresses": null,
             "IPAddress": "172.17.0.5",
                     "IPAddress": "172.17.0.5",
 ```
-We see that lighttpd is running on `172.17.0.5`...
+We see that lighttpd is running on `172.17.0.5`. And we know that `ba0dbafbd0b787a564635b887f77926ae0b3f979dcc72d30cf7fdb1707581919` is the hash for our crashing test case. Now we have the info we need to reproduce the crash. We use netcat (`nc`) to send our crashing test case to our lighttpd server on port 80:
 ```
-$ ls defects/
+nc 172.17.0.5 80 < ./tests/ba0dbafbd0b787a564635b887f77926ae0b3f979dcc72d30cf7fdb1707581919
 ```
-The output would be: 
-```
-ba0dbafbd0b787a564635b887f77926ae0b3f979dcc72d30cf7fdb1707581919
-```
-And `ba0dbafbd0b787a564635b887f77926ae0b3f979dcc72d30cf7fdb1707581919` is the hash for our crashing test case. Now we have the info we need to reproduce the crash. We use netcat (`nc`) to send our crashing test case to our lighttpd server on port 80:
-```
-$ nc 172.17.0.5 80 < ./tests/ba0dbafbd0b787a564635b887f77926ae0b3f979dcc72d30cf7fdb1707581919
-```
-If we switch back to the first terminal, we should see... nothing. The server is no longer running (it crashed!)
-```
-$ docker run --name lighttpd forallsecure/lighttpd:vulnerable 
-```
-The output would be: 
+If we switch back to the first terminal, we should see... nothing. The server is no longer running (it crashed!). In my shell (zsh), my terminal shows the exit status of the most recently run command. Below, you can see my terminal's output:
+
 ```
 2022-04-15 20:52:14: (log.c.75) server started 
                                                                                                                    SEGV ✘ 
 ```
 
-Congratulations! You've reproduced your first defect!
+Notice the SEGV? Congratulations! You've reproduced your first defect!
 
 #### macOS
 
 Due to limitations with Docker for Mac, we have separate instructions to demonstrate reproducing the lighttpd vulnerability.
 
 ```
-$ mayhem sync . 
+mayhem sync . 
 ```
 The output would be: 
 ```
@@ -255,7 +253,7 @@ Target synced at: '.'.
 ```
 Now check the files in the directory
 ```
-$ ls 
+ls 
 ```
 It would show: 
 ```
@@ -265,27 +263,30 @@ block_coverage.drcov  defects  func_coverage.json  line_coverage.lcov  Mayhemfil
 Start a bash shell inside the container:
 
 ```
-$ docker run --name lighttpd -it -v $PWD:/lighttpd forallsecure/lighttpd:vulnerable bash
+docker run --name lighttpd -it -v $PWD:/lighttpd forallsecure/lighttpd:vulnerable bash
 ```
-
-Launch lighttpd inside the container:
+This will bring you to a shell inside of the container. You can then launch lighttpd inside the container:
 ```
-$ /usr/local/sbin/lighttpd -D -f /usr/local/etc/lighttpd.conf
+/usr/local/sbin/lighttpd -D -f /usr/local/etc/lighttpd.conf
+```
+It should show:
+```
+2022-04-15 21:22:14: (log.c.75) server started 
 ```
 
 In another terminal window, enter the same container with another bash shell:
 ```
-$ docker exec -it lighttpd bash
+docker exec -it lighttpd bash
 ```
 
 In the second bash shell, install netcat:
 ```
-$ apt-get update && apt-get install -y netcat
+apt-get update && apt-get install -y netcat
 ```
 
-Send the payload to the running lighttpd server:
+Send the payload to the running lighttpd server (check your test case hash - it might be different!):
 ```
-$ nc 127.0.0.1 80 < /lighttpd/tests/ba0dbafbd0b787a564635b887f77926ae0b3f979dcc72d30cf7fdb1707581919
+nc 127.0.0.1 80 < /lighttpd/tests/ba0dbafbd0b787a564635b887f77926ae0b3f979dcc72d30cf7fdb1707581919
 ```
 
 You should see in the first terminal window that lighttpd crashed!
