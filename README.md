@@ -4,7 +4,7 @@
 
 - [Mayhem Freemium](https://mayhem.forallsecure.com/)
 - [Mayhem Hacking Community](https://community.forallsecure.com/)
-- [Discord Invite](https://discord.gg/yszjX46N)
+- [Discord Invite](https://discord.com/invite/8dxuvcnB)
 - [Mayhem Heroes GitHub Org](https://github.com/mayhemheroes)
 - [Target List](https://docs.google.com/spreadsheets/d/1cFwb9ZQMGRrZk8NxaGYX54Qdk3rN53ZW1k3SA36jyR8/edit?usp=sharing)
 - [Survey 1 (Training)](https://dydbdnwi0qu.typeform.com/to/jZEKf0it)
@@ -52,6 +52,10 @@ Targets that you wish to get paid for must meet the following criteria:
     - Code is considered Open Source if the entire code base is licensed under one (or more) of the recognized Open Source Initiative Licenses listed at https://opensource.org/licenses/alphabetical. 
 
 * Mayhem is not already integrated. You can find a list of integrated repositories at https://github.com/mayhemheroes.
+
+* The project is not part of oss-fuzz.
+
+* The resulting Mayhem run generates > 10 new test cases.
 
 If in doubt, ask in Discord or on the Mayhem Community.
 
