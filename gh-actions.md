@@ -152,6 +152,7 @@ With our Dockerfile, Mayhemfile, and Token configured, we're ready to setup the 
       push:
       pull_request:
       workflow_dispatch:
+      workflow_call:
     
     env:
       REGISTRY: ghcr.io
@@ -159,7 +160,7 @@ With our Dockerfile, Mayhemfile, and Token configured, we're ready to setup the 
     
     jobs:
       build:
-        name: '${{ matrix.os }} shared=${{ matrix.shared }} ${{ matrix.build_type }}'
+        name: ${{ matrix.os }} shared=${{ matrix.shared }} ${{ matrix.build_type }}
         runs-on: ${{ matrix.os }}
         strategy:
           matrix:
@@ -198,7 +199,7 @@ With our Dockerfile, Mayhemfile, and Token configured, we're ready to setup the 
             uses: ForAllSecure/mcode-action@v1
             with:
               mayhem-token: ${{ secrets.MAYHEM_TOKEN }}
-              args: --image ${{ steps.meta.outputs.tags }}
+              args: --image ${{ steps.meta.outputs.tags }} --duration 300
               sarif-output: sarif
     
           - name: Upload SARIF file(s)
