@@ -192,7 +192,9 @@ ls
 ```
 It would show something like:
 ```
-block_coverage.drcov  defects  func_coverage.json  line_coverage.lcov  Mayhemfile  tests
+drwxrwxr-x 2 stinger 4.0K Sep  1 10:51 defects/
+drwxrwxr-x 2 stinger 4.0K Sep  1 10:51 testsuite/
+-rwxr-xr-x 1 stinger  643 Sep  1 10:51 Mayhemfile*
 ```
 We see that we have a `defects/` folder and a `tests/` folder. We can test sending our crashing test case (under the defects/ folder) to our vulnerable version of lighttpd:
 ```
