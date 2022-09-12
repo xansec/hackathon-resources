@@ -288,7 +288,7 @@ apt-get update && apt-get install -y netcat
 
 Send the payload to the running lighttpd server (check your test case hash - it might be different!):
 ```
-nc 127.0.0.1 80 < /lighttpd/tests/ba0dbafbd0b787a564635b887f77926ae0b3f979dcc72d30cf7fdb1707581919
+nc 127.0.0.1 80 < /lighttpd/testsuite/ba0dbafbd0b787a564635b887f77926ae0b3f979dcc72d30cf7fdb1707581919
 ```
 
 You should see in the first terminal window that lighttpd crashed!
