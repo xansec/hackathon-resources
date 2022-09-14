@@ -14,7 +14,6 @@ Before we begin, we first must fork the repository.
 
 3. When asked where you want to create the fork, select your username.
 
-    ![Fork to Your Account](assets/images/gh-click-fork.png)
 
 Now you have your own fork of the `mayhem-cmake-example` repo. Next, we'll clone and run the toy target locally.
 
