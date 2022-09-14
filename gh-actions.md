@@ -46,7 +46,7 @@ In the CMake and libFuzzer exercises, we cloned the original or "upstream" mayhe
     cp Dockerfile.template Dockerfile
     ```
 
-2. There are two comments marked as TODO in the Dockerfile you'll need to change in your favorite text editor. For the first section, you need to add the build commands from steps 4-6 of the previous section using Dockerfile `RUN` entries. Under the second TODO, you need to change the COPY command so that it copies the libFuzzer executable (that you ran in step 7 of the previous section) into the packaging stage.
+2. There are two comments marked as TODO in the Dockerfile you'll need to change in your favorite text editor. For the first section, you need to add the build commands from steps 6-8 of the previous section using Dockerfile `RUN` entries. Under the second TODO, you need to change the COPY command so that it copies the libFuzzer executable (that you ran in step 7 of the previous section) into the packaging stage.
 
     If you're stuck, ask!
 
