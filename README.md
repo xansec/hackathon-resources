@@ -65,7 +65,7 @@ Targets that you wish to get paid for must meet the following criteria:
 
 If in doubt, ask in Discord or on the Mayhem Community.
 
-_ForAllSecure reserves the right to reject any submission with or without reason or explanation._
+_ForAllSecure reserves the right to reject any submission at its sole discretion._
 
 ## Troubleshooting Checklist
 
