@@ -221,5 +221,5 @@ With our Dockerfile, Mayhemfile, and Token configured, we're ready to setup the 
     ![Mayhem Run Link](assets/images/start-analysis-run-link.png)
     
     Select that link and it should bring you to your Mayhem run. Congratulations, you've integrated a repository with Mayhem!
-
-   
+    
+    Note: if you're having issues (e.g. "installation not allowed to write organization package" or other buildx errors), try the steps outlined in [this article on our community forum](https://community.forallsecure.com/t/error-buildx-call-failed-with-error-denied-installation-not-allowed-to-write-organization-package/354/2).
