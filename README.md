@@ -34,7 +34,7 @@
 
 5. Once ForAllSecure validates your target and elligiblity, you'll be asked to submit a pull request to the repository under github.com/mayhemheroes. If requested during the review, make changes.
 
-6. Once your changes have been merged, you'll be eligible to get paid!
+6. Once your changes have been approved and merged, you'll get paid within 45 days!
     * $100 for integration
     * $200 if the number of tests per second is greater than 100
     * $200 if the test suite size is greater than 100
