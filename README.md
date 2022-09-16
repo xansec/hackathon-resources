@@ -30,7 +30,7 @@
 
 3. Integrate Mayhem into your Fork.
 
-4. Submit [this form](https://dydbdnwi0qu.typeform.com/to/l6MK0WJp).
+4. Submit [this form](https://dydbdnwi0qu.typeform.com/to/YYJdU5wd).
 
 5. Once ForAllSecure validates your target and elligiblity, you'll be asked to submit a pull request to the repository under github.com/mayhemheroes. If requested during the review, make changes.
 
