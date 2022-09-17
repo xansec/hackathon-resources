@@ -28,7 +28,7 @@ In the CMake and libFuzzer exercises, we cloned the original or "upstream" mayhe
 2. Back in a terminal with your copy of `mayhem-cmake-example`, enter `git remote set-url origin ` and paste the URL, then press enter. Your command should look something like this:
 
     ```
-    git remote set-url origin https://github.com/nathanjackson/mayhem-cmake-example.git
+    git remote set-url origin https://github.com/<Your Github Username>/mayhem-cmake-example.git
     ```
 
 3. Change to a new branch and commit your libFuzzer target.
@@ -111,9 +111,11 @@ If this is what you saw, congratulations you just automated the build and packag
 docker push ghcr.io/<Your GitHub Username>/mayhem-cmake-example:latest
 ```
 
-6. Next mark the package as public following these steps in GitHub: https://docs.github.com/en/packages/learn-github-packages/configuring-a-packages-access-control-and-visibility#configuring-access-to-container-images-for-your-personal-account
+6. Mark the package as public following these steps in GitHub: https://docs.github.com/en/packages/learn-github-packages/configuring-a-packages-access-control-and-visibility#configuring-access-to-container-images-for-your-personal-account
 
-7. Finally, link the package to your mayhem-cmake-example following these steps in the GitHub documentation: https://docs.github.com/en/packages/learn-github-packages/connecting-a-repository-to-a-package#connecting-a-repository-to-a-user-owned-package-on-github
+7. Link the package to your mayhem-cmake-example following these steps in the GitHub documentation: https://docs.github.com/en/packages/learn-github-packages/connecting-a-repository-to-a-package#connecting-a-repository-to-a-user-owned-package-on-github
+
+8. Finally, double-check that your package's permissions are configured to allow your repo's workflow actions to write to it. https://docs.github.com/en/packages/learn-github-packages/configuring-a-packages-access-control-and-visibility#ensuring-workflow-access-to-your-package 
 
 Now it's time to create our Mayhemfile and setup the GitHub Action.
 
@@ -213,7 +215,7 @@ With our Dockerfile, Mayhemfile, and Token configured, we're ready to setup the 
     git checkout -b mayhem
     git add Dockerfile Mayhemfile .github/workflows/mayhem.yml
     git commit -m 'add GitHub action to launch Mayhem'
-    git push -u origin mayhem
+    git push --set-upstream origin mayhem
     ```
     
 4. When you push the changes in the previous step, GitHub will automatically start the first workflow run. If you select the run and scroll down to the "Start Analysis" phase, you should see the link to the corresponding Mayhem run at the end of the output, here:
