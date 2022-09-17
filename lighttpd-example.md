@@ -196,7 +196,7 @@ drwxrwxr-x 2 stinger 4.0K Sep  1 10:51 defects/
 drwxrwxr-x 2 stinger 4.0K Sep  1 10:51 testsuite/
 -rwxr-xr-x 1 stinger  643 Sep  1 10:51 Mayhemfile*
 ```
-We see that we have a `defects/` folder and a `tests/` folder. We can test sending our crashing test case (under the defects/ folder) to our vulnerable version of lighttpd:
+We see that we have a `defects/` folder and a `testsuite/` folder. We can test sending our crashing test case (under the defects/ folder) to our vulnerable version of lighttpd:
 ```
 ls defects/
 ```
@@ -226,7 +226,7 @@ This command would point us to the IP Address:
 ```
 We see that lighttpd is running on `172.17.0.5`. And we know that `ba0dbafbd0b787a564635b887f77926ae0b3f979dcc72d30cf7fdb1707581919` is the hash for our crashing test case. Now we have the info we need to reproduce the crash. We use netcat (`nc`) to send our crashing test case to our lighttpd server on port 80:
 ```
-nc 172.17.0.5 80 < ./tests/ba0dbafbd0b787a564635b887f77926ae0b3f979dcc72d30cf7fdb1707581919
+nc 172.17.0.5 80 < ./testsuite/ba0dbafbd0b787a564635b887f77926ae0b3f979dcc72d30cf7fdb1707581919
 ```
 If we switch back to the first terminal, we should see... nothing. The server is no longer running (it crashed!). In my shell (zsh), my terminal shows the exit status of the most recently run command. Below, you can see my terminal's output:
 
