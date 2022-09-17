@@ -130,7 +130,7 @@ This lab will show you how to build a Docker image for a toy program, push it to
 
 Now that you've logged in to the GitHub container registry, we can build and push a Docker image.
 
-1. In the [lighttpd lab](https://github.com/mayhemheroes/hackathon-resources/blob/main/lighttpd-example.md#step-3-clone-hackathon-resources) you should have already cloned the `hackathon-resources` repo. Change into the `lab2b` directory.
+1. In the [lighttpd lab](https://github.com/mayhemheroes/hackathon-resources/blob/main/lighttpd-example.md#step-3-clone-hackathon-resources) you should have already cloned the `hackathon-resources` repo. Change into the `hackathon-resources/lab2b` directory.
 
 2. List the contents of the lab2b directory.
 
