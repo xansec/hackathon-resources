@@ -228,13 +228,13 @@ Now that you've pushed your image to Mayhem, let's kick off a run.
 
     ```yaml
     # Namespaced project name that the target belongs to
-    project: nathanjackson/hackathon
+    project: hackathon
 
     # Target name (should be unique within the project)
     target: fuzzme
 
     # Base image to run the binary in.
-    image: ghcr.io/nathanjackson/fuzzme:latest
+    image: ghcr.io/<YOUR GITHUB USERNAME>/fuzzme:latest
 
     # List of commands used to test the target
     cmds:
