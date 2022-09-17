@@ -38,23 +38,22 @@ Now you have your own fork of the `mayhem-cmake-example` repo. Next, we'll clone
     cmake ..
     ```
 
-
-Note, if you're on macOS, you will first need to install the Homebrew package manager and cmake. Run the following command to install Homebrew.
-```
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-```
-The install script will output two commands similar to:
-```
-echo 'eval "\$(${HOMEBREW_PREFIX}/bin/brew shellenv)"' >> ${shell_profile}
-eval "\$(${HOMEBREW_PREFIX}/bin/brew shellenv)"
-```
-Run the provided commands to add the brew command to your terminal.
-Once complete, run 
-```
-brew update
-brew install cmake
-cmake ..
-```
+    Note: if you're on macOS, you will first need to install the Homebrew package manager and cmake. Run the following command to install Homebrew.
+    ```
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    ```
+    The install script will output two commands similar to:
+    ```
+    echo 'eval "\$(${HOMEBREW_PREFIX}/bin/brew shellenv)"' >> ${shell_profile}
+    eval "\$(${HOMEBREW_PREFIX}/bin/brew shellenv)"
+    ```
+    Run the provided commands to add the brew command to your terminal.
+    Once complete, run 
+    ```
+    brew update
+    brew install cmake
+    cmake ..
+    ```
 
 4. Run Make
 
