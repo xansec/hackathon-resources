@@ -35,7 +35,7 @@ In the CMake and libFuzzer exercises, we forked the original or "upstream" mayhe
 3. Let's create a new branch to hold our changes by doing
     
     ```
-    git commit -b mayhem
+    git checkout -b mayhem
     ```
 5. And then add `fuzzme.c` and `CMakeLists.txt` to the staged files that will be commited with
 
@@ -47,6 +47,11 @@ In the CMake and libFuzzer exercises, we forked the original or "upstream" mayhe
     ```
     git commit -m 'convert to libFuzzer target'
     git push --set-upstream origin mayhem
+    ```
+    You may need to configure your email and username for git if you've not done it yet.
+    ```
+    git config --global user.email "<email>"
+    git config --global user.name "<Your name>"
     ```
 
 ## Create a Dockerfile
