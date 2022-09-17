@@ -44,15 +44,21 @@ In the CMake and libFuzzer exercises, we forked the original or "upstream" mayhe
     ```
 6. And finally let's commit and push our changes to the new branch. (You may need to give Github a username and personal access token. This is where you can use the token you created from [the Docker+Mayhem exercise](https://github.com/mayhemheroes/hackathon-resources/blob/main/docker-intro.md)!)
 
-    ```
-    git commit -m 'convert to libFuzzer target'
-    git push --set-upstream origin mayhem
-    ```
-    You may need to configure your email and username for git if you've not done it yet.
-    ```
-    git config --global user.email "<email>"
-    git config --global user.name "<Your name>"
-    ```
+If you're running out of a VM, you'll probably need to configure the name ane email for git before you can commit anything. You can do that with these commands:
+
+```
+git config --global user.email "<email>"
+git config --global user.name "<Your name>"
+```
+    
+And once the email and name have been set, you can go ahead and commit and push.
+
+
+```
+git commit -m 'convert to libFuzzer target'
+git push --set-upstream origin mayhem
+```
+
 
 ## Create a Dockerfile
 
