@@ -2,12 +2,26 @@
 
 In this exercise you will build and run a CMake executable.
 
+## Forking the repository
+
+Before we begin, we first must fork the repository.
+
+1. In your browser, navigate to https://github.com/mayhemheroes/mayhem-cmake-example.
+
+2. Click "Fork" near the top of the page.
+
+    ![Fork](assets/images/gh-click-fork.png)
+
+3. When asked where you want to create the fork, select your username.
+
+Now you have your own fork of the `mayhem-cmake-example` repo. Next, we'll clone and run the toy target locally.
+
 ## Clone and Run Locally
 
 1. In a terminal, clone mayhem-cmake-example and change into the directory.
 
     ```
-    git clone https://github.com/mayhemheroes/mayhem-cmake-example
+    git clone https://github.com/<Your Github Username>/mayhem-cmake-example
     cd mayhem-cmake-example/
     ```
 
@@ -173,4 +187,3 @@ bug
 artifact_prefix='./'; Test unit written to ./crash-6885858486f31043e5839c735d99457f045affd0
 Base64: YnVn
 ```
-
