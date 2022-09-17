@@ -145,8 +145,7 @@ Now it's time to create our Mayhemfile and setup the GitHub Action.
 
 With your Dockerfile written, you just need to create a Mayhemfile which should be the easiest part of the process!
 
-Create a `Mayhemfile` with the following contents in your copy of the repo. Be sure to replace <YOUR GITHUB USERNAME> with your GitHub username.
-
+Create a `Mayhemfile` with the following contents in your copy of the repo. 
 ```
 project: mayhem-cmake-example
 target: fuzzme
