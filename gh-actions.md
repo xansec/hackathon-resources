@@ -32,11 +32,19 @@ In the CMake and libFuzzer exercises, we forked the original or "upstream" mayhe
     no changes added to commit (use "git add" and/or "git commit -a")
     ```
 
-3. Let's create a new branch to hold our changes, add fuzzme.c and CMakeLists.txt to the staged files, commit our changes, and finally push them up to the new branch on our repo. (You may need to give Github a username and personal access token. This is where you can use the token you created from the Docker+Mayhem exercise!)
+3. Let's create a new branch to hold our changes by doing
+    
+    ```
+    git commit -b mayhem
+    ```
+5. And then add `fuzzme.c` and `CMakeLists.txt` to the staged files that will be commited with
 
     ```
-    git checkout -b mayhem
     git add fuzzme.c CMakeLists.txt
+    ```
+6. And finally let's commit and push our changes to the new branch. (You may need to give Github a username and personal access token. This is where you can use the token you created from [the Docker+Mayhem exercise](https://github.com/mayhemheroes/hackathon-resources/blob/main/docker-intro.md)!)
+
+    ```
     git commit -m 'convert to libFuzzer target'
     git push --set-upstream origin mayhem
     ```
