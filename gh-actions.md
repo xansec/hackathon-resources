@@ -2,41 +2,44 @@
 
 In this exercise you will setup a GitHub Action that analyzes a toy project automatically everytime there is a push to the repository.
 
-## Forking the repository
+## Create a new branch for Mayhem
 
-Before we begin, we first must fork the repository.
+In the CMake and libFuzzer exercises, we forked the original or "upstream" mayhem-cmake-example repo.
 
-1. In your browser, navigate to https://github.com/mayhemheroes/mayhem-cmake-example.
-
-2. Click "Fork" near the top of the page.
-
-    ![Fork](assets/images/gh-click-fork.png)
-
-3. When asked where you want to create the fork, select your username.
-
-
-Now you have your own fork of the `mayhem-cmake-example` repo. Next, we'll clone and run the toy target locally.
-
-## Update your Clone to Point to your Fork
-
-In the CMake and libFuzzer exercises, we cloned the original or "upstream" mayhem-cmake-example repo. We need to update it to point to your new fork.
-
-1. Copy the HTTP Clone URL using the button that can be found on your fork's GitHub page.
-
-    ![Copy Fork URL](assets/images/gh-get-fork-url.png)
-
-2. Back in a terminal with your copy of `mayhem-cmake-example`, enter `git remote set-url origin ` and paste the URL, then press enter. Your command should look something like this:
-
+1. Change into the mayhem cmake-example directory.
     ```
-    git remote set-url origin https://github.com/<Your Github Username>/mayhem-cmake-example.git
+    cd mayhem-cmake-example/
+    ```
+2. Check the status of the local files.
+    ```
+    git status
+    ```
+    You should see a message indicating that your local copies of fuzzme.c and CMakeLists.txt differ from the repo.
+    ```
+    On branch master
+    Your branch is up to date with 'origin/master'.
+
+    Changes not staged for commit:
+      (use "git add <file>..." to update what will be committed)
+      (use "git restore <file>..." to discard changes in working directory)
+            modified:   CMakeLists.txt
+            modified:   fuzzme.c
+
+    Untracked files:
+      (use "git add <file>..." to include in what will be committed)
+            build/
+
+    no changes added to commit (use "git add" and/or "git commit -a")
     ```
 
-3. Change to a new branch and commit your libFuzzer target.
+3. Let's create a new branch to hold our changes, add fuzzme.c and CMakeLists.txt to the staged files, commit our changes, and finally push them up to the new branch on our repo. (You may need to give Github a username and personal access token. This is where you can use the token you created from the Docker+Mayhem exercise!)
 
     ```
     git checkout -b mayhem
     git add fuzzme.c CMakeLists.txt
     git commit -m 'convert to libFuzzer target'
+    git push --set-upstream origin mayhem
+    ```
 
 ## Create a Dockerfile
 
@@ -209,13 +212,12 @@ With our Dockerfile, Mayhemfile, and Token configured, we're ready to setup the 
               sarif_file: sarif
     ```
 
-3. Now we'll commit and push our changes onto a new branch called "mayhem". (You may need to give Github a username and personal access token. This is where you can use the token you created from the Docker+Mayhem exercise!):
+3. Now we'll commit our changes to our "mayhem" branch:
 
     ```
-    git checkout -b mayhem
     git add Dockerfile Mayhemfile .github/workflows/mayhem.yml
     git commit -m 'add GitHub action to launch Mayhem'
-    git push --set-upstream origin mayhem
+    git push
     ```
     
 4. When you push the changes in the previous step, GitHub will automatically start the first workflow run. If you select the run and scroll down to the "Start Analysis" phase, you should see the link to the corresponding Mayhem run at the end of the output, here:
