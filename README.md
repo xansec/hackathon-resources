@@ -75,3 +75,8 @@ There are several small configuration steps that you'll need to take on your rep
 
 * Fork repository is configured with a `MAYHEM_TOKEN` secret.
 
+## Other Resources
+
+## Resources
+
+* [Linux CLI Reference](assets/Linux_Useful_Commands.pdf)
