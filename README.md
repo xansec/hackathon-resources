@@ -80,3 +80,4 @@ There are several small configuration steps that you'll need to take on your rep
 ## Resources
 
 * [Linux CLI Reference](assets/Linux_Useful_Commands.pdf)
+* [Linux CLI for Beginners](https://ubuntu.com/tutorials/command-line-for-beginners#1-overview)
