@@ -167,7 +167,7 @@ You've just:
 
 Note: this will introduce running a target with Docker, which we will go over in more detail in the next section.
 
-There are different steps for reproducing on Linux vs. macOS. Refer to the [Linux](https://github.com/mayhemheroes/hackathon-resources/blob/main/lighttpd-example.md#linux) and [macOS](https://github.com/mayhemheroes/hackathon-resources/blob/main/lighttpd-example.md#macos) sections respectively for your situation.
+There are different steps for reproducing on Linux vs. macOS. Refer to the [Linux](#linux) and [macOS](#macos) sections respectively for your situation.
 
 #### Linux
 
