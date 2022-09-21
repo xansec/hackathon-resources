@@ -214,7 +214,7 @@ This will give the output:
 ```
 2022-04-15 20:52:14: (log.c.75) server started 
 ```
-Now, if we open another terminal, we can send the crashing test case to our running server. To figure out where the server is, run `docker inspect` (and look for IPAddress):
+That terminal is now hanging while the server runs so we can't use it to send commands until the server stops. If we open another terminal, we can send the crashing test case to our running server. To figure out where the server is, run `docker inspect` (and use `grep` to look for the IP address the container is using):
 ```
 docker inspect lighttpd | grep "IPAddress" 
 ```
@@ -224,7 +224,7 @@ This command would point us to the IP Address:
             "IPAddress": "172.17.0.5",
                     "IPAddress": "172.17.0.5",
 ```
-We see that lighttpd is running on `172.17.0.5`. And we know that `ba0dbafbd0b787a564635b887f77926ae0b3f979dcc72d30cf7fdb1707581919` is the hash for our crashing test case. Now we have the info we need to reproduce the crash. We use netcat (`nc`) to send our crashing test case to our lighttpd server on port 80:
+We see that lighttpd is running on `172.17.0.5`. And we know that `ba0dbafbd0b787a564635b887f77926ae0b3f979dcc72d30cf7fdb1707581919` is the hash for our crashing test case. Now we have the info we need to reproduce the crash. First we must change into the `hackathon-resources/lighttpd` directory and then we can use netcat (`nc`) to send our crashing test case to our lighttpd server on port 80:
 ```
 nc 172.17.0.5 80 < ./testsuite/ba0dbafbd0b787a564635b887f77926ae0b3f979dcc72d30cf7fdb1707581919
 ```
