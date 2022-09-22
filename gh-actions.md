@@ -138,6 +138,7 @@ docker push ghcr.io/<Your GitHub Username>/mayhem-cmake-example:latest
     On your "Packages" page, select the `mayhem-cmake-example` you just pushed out to GitHub. Once on the package page, under the "Link this package to a repository" section, select "Connect repository" and then choose "mayhem-cmake-example" from the list.
     ![Link this package to a repository](assets/images/link_package_to_repository.png)
     
+    
 7. Mark the package as public and allow writing to it
 
     First click on the "Package settings" option as seen below.
@@ -262,7 +263,8 @@ With our Dockerfile, Mayhemfile, and Token configured, we're ready to setup the 
     git push
     ```
     
-4. When you push the changes in the previous step, GitHub will automatically start the first workflow run. Go to the actions tab our on GitHub.
+4. When you push the changes in the previous step, GitHub will automatically start the first workflow run. Go to the actions tab out on GitHub.
+    
     ![actions_tab](assets/images/actions_tab.png)
 
 
