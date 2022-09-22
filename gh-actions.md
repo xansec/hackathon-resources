@@ -127,7 +127,7 @@ Base64: YnVn
 
 If this is what you saw, congratulations you just automated the build and package process! 
 
-5. Now that the image is built,, push the image to the registry like last time:
+5. Now that the image is built, push the image to the registry like last time:
 
 ```
 docker push ghcr.io/<Your GitHub Username>/mayhem-cmake-example:latest
@@ -228,6 +228,11 @@ With our Dockerfile, Mayhemfile, and Token configured, we're ready to setup the 
             uses: github/codeql-action/upload-sarif@v1
             with:
               sarif_file: sarif
+    ```
+    Alternatively if you can't easily copy/paste the above (e.g. if you are using a web-based VM), you can `wget` the file from the solutions branch.
+
+    ```
+    wget -O mayhem.yml https://raw.githubusercontent.com/mayhemheroes/mayhem-cmake-example/solution/.github/workflows/mayhem.yml
     ```
 
 3. Now we'll commit our changes to our "mayhem" branch:
