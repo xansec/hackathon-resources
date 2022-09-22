@@ -133,9 +133,33 @@ If this is what you saw, congratulations you just automated the build and packag
 docker push ghcr.io/<Your GitHub Username>/mayhem-cmake-example:latest
 ```
 
+6. Link the package to your `mayhem-cmake-example` repository as shown in the pictures below.
+
+    On your "Packages" page, select the `mayhem-cmake-example` you just pushed out to GitHub. Once on the package page, under the "Link this package to a repository" section, select "Connect repository" and then choose "mayhem-cmake-example" from the list.
+    ![Link this package to a repository](assets/images/link_package_to_repository.png)
+    
+7. Mark the package as public and allow writing to it
+
+    First click on the "Package settings" option as seen below.
+    ![Package settings](assets/images/package_settings.png)
+    
+    Next at the bottom of the page in the visibility settings, click "Change visibility".
+    ![change_visibility](assets/images/change_visibility.png)
+    
+    And then choose "public", type `mayhem-cmake-example` and click "I understand the consequences"
+    ![public_visibility](assets/images/package_public.png)
+    
+    Next under "Actions repository access" click "Add repository"
+    ![add_repository](assets/images/add_actions_repo_access.png)
+    
+    As you begin typing `mayhem-cmake-example` the repository will appear for you to click on. Click on it and the page will refresh.
+    ![repo_selection](assets/images/add-repo.png)
+    
+    Lastly we need to set the permissions to "Write" instead of just "Read". In the "Manage Actions access" section, to the write of `mayhem-cmake-example` choose the role to be "Write".
+    ![write_selection](assets/images/set_to_write.png)
+
 6. Mark the package as public following these steps in GitHub: https://docs.github.com/en/packages/learn-github-packages/configuring-a-packages-access-control-and-visibility#configuring-access-to-container-images-for-your-personal-account
 
-7. Link the package to your mayhem-cmake-example following these steps in the GitHub documentation: https://docs.github.com/en/packages/learn-github-packages/connecting-a-repository-to-a-package#connecting-a-repository-to-a-user-owned-package-on-github
 
 8. Finally, double-check that your package's permissions are configured to allow your repo's workflow actions to write to it. https://docs.github.com/en/packages/learn-github-packages/configuring-a-packages-access-control-and-visibility#ensuring-workflow-access-to-your-package 
 
