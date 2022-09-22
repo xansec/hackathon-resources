@@ -133,7 +133,7 @@ If this is what you saw, congratulations you just automated the build and packag
 docker push ghcr.io/<Your GitHub Username>/mayhem-cmake-example:latest
 ```
 
-6. Link the package to your `mayhem-cmake-example` repository as shown in the pictures below.
+6. Link the package to your `mayhem-cmake-example` repository as shown in the picture below.
 
     On your "Packages" page, select the `mayhem-cmake-example` you just pushed out to GitHub. Once on the package page, under the "Link this package to a repository" section, select "Connect repository" and then choose "mayhem-cmake-example" from the list.
     ![Link this package to a repository](assets/images/link_package_to_repository.png)
@@ -156,12 +156,7 @@ docker push ghcr.io/<Your GitHub Username>/mayhem-cmake-example:latest
     ![repo_selection](assets/images/add-repo.png)
     
     Lastly we need to set the permissions to "Write" instead of just "Read". In the "Manage Actions access" section, to the write of `mayhem-cmake-example` choose the role to be "Write".
-    ![write_selection](assets/images/set_to_write.png)
-
-6. Mark the package as public following these steps in GitHub: https://docs.github.com/en/packages/learn-github-packages/configuring-a-packages-access-control-and-visibility#configuring-access-to-container-images-for-your-personal-account
-
-
-8. Finally, double-check that your package's permissions are configured to allow your repo's workflow actions to write to it. https://docs.github.com/en/packages/learn-github-packages/configuring-a-packages-access-control-and-visibility#ensuring-workflow-access-to-your-package 
+    ![write_selection](assets/images/set_to_write.png) 
 
 Now it's time to create our Mayhemfile and setup the GitHub Action.
 
@@ -267,7 +262,11 @@ With our Dockerfile, Mayhemfile, and Token configured, we're ready to setup the 
     git push
     ```
     
-4. When you push the changes in the previous step, GitHub will automatically start the first workflow run. If you select the run and scroll down to the "Start Analysis" phase, you should see the link to the corresponding Mayhem run at the end of the output, here:
+4. When you push the changes in the previous step, GitHub will automatically start the first workflow run. Go to the actions tab our on GitHub.
+    ![actions_tab](assets/images/actions_tab.png)
+
+
+5. You can select the run and scroll down to the "Start Analysis" phase and you should see the link to the corresponding Mayhem run at the end of the output, here:
 
     ![Mayhem Run Link](assets/images/start-analysis-run-link.png)
     
