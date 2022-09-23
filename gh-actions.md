@@ -156,7 +156,7 @@ docker push ghcr.io/<Your GitHub Username>/mayhem-cmake-example:latest
     As you begin typing `mayhem-cmake-example` the repository will appear for you to click on. Click on it and the page will refresh.
     ![repo_selection](assets/images/add-repo.png)
     
-    Lastly we need to set the permissions to "Write" instead of just "Read". In the "Manage Actions access" section, to the write of `mayhem-cmake-example` choose the role to be "Write".
+    Lastly we need to set the permissions to "Write" instead of just "Read". In the "Manage Actions access" section, to the right of `mayhem-cmake-example` choose the role to be "Write".
     ![write_selection](assets/images/set_to_write.png) 
 
 Now it's time to create our Mayhemfile and setup the GitHub Action.
