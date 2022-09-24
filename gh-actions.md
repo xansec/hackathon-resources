@@ -2,7 +2,7 @@
 
 In this exercise you will setup a GitHub Action that analyzes a toy project automatically everytime there is a push to the repository.
 
-## Create a new branch for Mayhem
+## Before we begin: Prepare your workspace
 
 In the CMake and libFuzzer exercises, we forked the original or "upstream" mayhem-cmake-example repo.
 
@@ -14,7 +14,7 @@ In the CMake and libFuzzer exercises, we forked the original or "upstream" mayhe
     ```
     git status
     ```
-    You should see a message indicating that your local copies of fuzzme.c and CMakeLists.txt differ from the repo.
+    You should see a message indicating that your local copies of fuzzme.c and CMakeLists.txt differ from the repo. We'll also notice that `build/` is untracked.
     ```
     On branch master
     Your branch is up to date with 'origin/master'.
@@ -31,36 +31,26 @@ In the CMake and libFuzzer exercises, we forked the original or "upstream" mayhe
 
     no changes added to commit (use "git add" and/or "git commit -a")
     ```
-
-3. And then add `fuzzme.c` and `CMakeLists.txt` to the staged files that will be commited with
-
-    ```
-    git add fuzzme.c CMakeLists.txt
-    ```
-4. And finally let's commit and push our changes to the new branch. (You may need to give Github a username and personal access token. This is where you can use the token you created from [the Docker+Mayhem exercise](https://github.com/mayhemheroes/hackathon-resources/blob/main/docker-intro.md)!)
-
-If you're running out of a VM, you'll probably need to configure the name ane email for git before you can commit anything. You can do that with these commands:
-
-```
-git config --global user.email "<email>"
-git config --global user.name "<Your name>"
-```
     
-And once the email and name have been set, you can go ahead and commit and push.
+3.  We can go ahead and blow away that build directory:
+    
+    ```
+    rm -rf ./build
+    ```
+    
+4. Then, let's make a directory where our Mayhem-specific changes will go.
 
-
-```
-git commit -m 'convert to libFuzzer target'
-git push --set-upstream origin mayhem
-```
+    ```
+    mkdir mayhem
+    ````
 
 
 ## Create a Dockerfile
 
-1. Copy `Dockerfile.template` to `Dockerfile`
+1. Copy `Dockerfile.template` to `mayhem/Dockerfile`
 
     ```
-    cp Dockerfile.template Dockerfile
+    cp Dockerfile.template mayhem/Dockerfile
     ```
 
 2. There are two comments marked as TODO in the Dockerfile you'll need to change in your favorite text editor. For the first section, you need to add the build commands from steps 6-8 of the previous section using Dockerfile `RUN` entries. Under the second TODO, you need to change the COPY command so that it copies the libFuzzer executable (that you ran in step 9 of the previous section) into the packaging stage.
@@ -70,7 +60,7 @@ git push --set-upstream origin mayhem
 3. Once you've created your Dockerfile, you can test the build process by running the following command:
 
     ```
-    docker build -t ghcr.io/<Your Github Username>/mayhem-cmake-example:latest .
+    docker build -t ghcr.io/<Your Github Username>/mayhem-cmake-example:latest . -f mayhem/Dockerfile
     ```
 
 4. If the build succeeded without error, you should be able to run the fuzz target inside the Docker container:
@@ -122,21 +112,27 @@ Base64: YnVn
 
 If this is what you saw, congratulations you just automated the build and package process! 
 
-
 Now it's time to create our Mayhemfile and setup the GitHub Action.
 
 ## Add a Mayhemfile
 
 With your Dockerfile written, you just need to create a Mayhemfile which should be the easiest part of the process!
 
-Create a `Mayhemfile` with the following contents in your copy of the repo. 
-```
-project: mayhem-cmake-example
-target: fuzzme
+1. Create the Mayhemfile
 
-cmds:
-  - cmd: /fuzzme
-```
+    ```
+    touch mayhem/Mayhemfile
+    ```
+
+2. Open `mayhem/Mayhemfile` with your preferred text editor and paste the following contents in. 
+
+    ```
+    project: mayhem-cmake-example
+    target: fuzzme
+
+    cmds:
+      - cmd: /fuzzme
+    ```
 
 Note that since we're setting up a GitHub Action, we can leave out many of the fields that would otherwise be required. The GitHub Action will automatically generate the fields for us.
 
@@ -221,10 +217,17 @@ With our Dockerfile, Mayhemfile, and Token configured, we're ready to setup the 
     wget -O mayhem.yml https://raw.githubusercontent.com/mayhemheroes/mayhem-cmake-example/solution/.github/workflows/mayhem.yml
     ```
 
-3. Now we'll commit our changes to our "mayhem" branch:
+3. Now we'll commit our changes. NOTE: If you're running out of a VM, you'll probably need to configure the name ane email for git before you can commit anything. You can do that with these commands:
 
     ```
-    git add Dockerfile Mayhemfile .github/workflows/mayhem.yml
+    git config --global user.email "<email>"
+    git config --global user.name "<Your name>"
+    ```
+    
+    Once the email and name have been set, you can go ahead and commit and push.
+    
+    ```
+    git add .
     git commit -m 'add GitHub action to launch Mayhem'
     git push
     ```
