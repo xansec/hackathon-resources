@@ -32,17 +32,12 @@ In the CMake and libFuzzer exercises, we forked the original or "upstream" mayhe
     no changes added to commit (use "git add" and/or "git commit -a")
     ```
 
-3. Let's create a new branch to hold our changes by doing
-    
-    ```
-    git checkout -b mayhem
-    ```
-5. And then add `fuzzme.c` and `CMakeLists.txt` to the staged files that will be commited with
+3. And then add `fuzzme.c` and `CMakeLists.txt` to the staged files that will be commited with
 
     ```
     git add fuzzme.c CMakeLists.txt
     ```
-6. And finally let's commit and push our changes to the new branch. (You may need to give Github a username and personal access token. This is where you can use the token you created from [the Docker+Mayhem exercise](https://github.com/mayhemheroes/hackathon-resources/blob/main/docker-intro.md)!)
+4. And finally let's commit and push our changes to the new branch. (You may need to give Github a username and personal access token. This is where you can use the token you created from [the Docker+Mayhem exercise](https://github.com/mayhemheroes/hackathon-resources/blob/main/docker-intro.md)!)
 
 If you're running out of a VM, you'll probably need to configure the name ane email for git before you can commit anything. You can do that with these commands:
 
@@ -127,37 +122,6 @@ Base64: YnVn
 
 If this is what you saw, congratulations you just automated the build and package process! 
 
-5. Now that the image is built, push the image to the registry like last time:
-
-```
-docker push ghcr.io/<Your GitHub Username>/mayhem-cmake-example:latest
-```
-
-6. Link the package to your `mayhem-cmake-example` repository as shown in the picture below.
-
-    On your "Packages" page, select the `mayhem-cmake-example` you just pushed out to GitHub. Once on the package page, under the "Link this package to a repository" section, select "Connect repository" and then choose "mayhem-cmake-example" from the list.
-    ![Link this package to a repository](assets/images/link_package_to_repository.png)
-    
-    
-7. Mark the package as public and allow writing to it
-
-    First click on the "Package settings" option as seen below.
-    ![Package settings](assets/images/package_settings.png)
-    
-    Next at the bottom of the page in the visibility settings, click "Change visibility".
-    ![change_visibility](assets/images/change_visibility.png)
-    
-    And then choose "public", type `mayhem-cmake-example` and click "I understand the consequences"
-    ![public_visibility](assets/images/package_public.png)
-    
-    Next under "Actions repository access" click "Add repository"
-    ![add_repository](assets/images/add_actions_repo_access.png)
-    
-    As you begin typing `mayhem-cmake-example` the repository will appear for you to click on. Click on it and the page will refresh.
-    ![repo_selection](assets/images/add-repo.png)
-    
-    Lastly we need to set the permissions to "Write" instead of just "Read". In the "Manage Actions access" section, to the right of `mayhem-cmake-example` choose the role to be "Write".
-    ![write_selection](assets/images/set_to_write.png) 
 
 Now it's time to create our Mayhemfile and setup the GitHub Action.
 
@@ -194,60 +158,62 @@ With our Dockerfile, Mayhemfile, and Token configured, we're ready to setup the 
       push:
       pull_request:
       workflow_dispatch:
-      workflow_call:
-    
+
     env:
       REGISTRY: ghcr.io
       IMAGE_NAME: ${{ github.repository }}
-    
+
     jobs:
       build:
-        name: ${{ matrix.os }} shared=${{ matrix.shared }} ${{ matrix.build_type }}
-        runs-on: ${{ matrix.os }}
-        strategy:
-          matrix:
-            os: [ubuntu-latest]
-            shared: [false]
-            build_type: [Release]
-            include:
-              - os: ubuntu-latest
-                triplet: x64-linux
-    
+        name: 'Build mayhem fuzzing container'
+        runs-on: ubuntu-latest
         steps:
           - uses: actions/checkout@v2
-    
-          - name: Log in to the Container registry
-            uses: docker/login-action@f054a8b539a109f9f41c372932f1ae047eff08c9
-            with:
-              registry: ${{ env.REGISTRY }}
-              username: ${{ github.actor }}
-              password: ${{ secrets.GITHUB_TOKEN }}
-    
-          - name: Extract metadata (tags, labels) for Docker
-            id: meta
-            uses: docker/metadata-action@98669ae865ea3cffbcbaa878cf57c20bbf1c6c38
-            with:
-              images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
-    
-          - name: Build and push Docker image
-            uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
-            with:
-              context: .
-              push: true
-              tags: ${{ steps.meta.outputs.tags }}
-              labels: ${{ steps.meta.outputs.labels }}
-    
-          - name: Start analysis
-            uses: ForAllSecure/mcode-action@v1
-            with:
-              mayhem-token: ${{ secrets.MAYHEM_TOKEN }}
-              args: --image ${{ steps.meta.outputs.tags }} --duration 300
-              sarif-output: sarif
-    
-          - name: Upload SARIF file(s)
-            uses: github/codeql-action/upload-sarif@v1
-            with:
-              sarif_file: sarif
+
+      - name: Log in to the Container registry
+        uses: docker/login-action@f054a8b539a109f9f41c372932f1ae047eff08c9
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Extract metadata (tags, labels) for Docker
+        id: meta
+        uses: docker/metadata-action@98669ae865ea3cffbcbaa878cf57c20bbf1c6c38
+        with:
+          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
+        with:
+          context: .
+          file: mayhem/Dockerfile
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+
+    outputs:
+      image: ${{ steps.meta.outputs.tags }}
+
+      mayhem:
+        needs: build
+        name: 'fuzz ${{ matrix.mayhemfile }}'
+        runs-on: ubuntu-latest
+        strategy:
+          fail-fast: false
+          matrix:
+            mayhemfile:
+              - mayhem/Mayhemfile
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Start analysis for ${{ matrix.mayhemfile }}
+        uses: ForAllSecure/mcode-action@v1
+        with:
+          mayhem-token: ${{ secrets.MAYHEM_TOKEN }}
+          args: --image ${{ needs.build.outputs.image }} --file ${{ matrix.mayhemfile }} --duration 300
+          sarif-output: sarif
     ```
     Alternatively if you can't easily copy/paste the above (e.g. if you are using a web-based VM), you can `wget` the file from the solutions branch.
 
